@@ -1,8 +1,10 @@
-# personal-dotfiles
+# Dotfiles
 
-## Setup
-stow -vt ~ *
+## Tasks
+```yaml
+* clean:        clean dotfiles
+* install:      install dotfiles
+```
 
-
-### VIM
+## Setup VIM
 :PlugInstall

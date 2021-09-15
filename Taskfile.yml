@@ -12,4 +12,16 @@ tasks:
     desc: install dotfiles
     cmds:
       - |
-
+        for folder in `ls -d */`; do
+          stow -v -t ~ $folder
+        done
+    silent: true
+  
+  clean:
+    desc: clean dotfiles
+    cmds:
+      - |
+        for folder in `ls -d */`; do
+          stow -v -D -t ~ $folder
+        done
+    silent: true
