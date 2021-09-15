@@ -2,7 +2,7 @@
 
 ## Tasks
 ```yaml
-* clean:        clean dotfiles
+* uninstall:        clean dotfiles
 * install:      install dotfiles
 ```
 
