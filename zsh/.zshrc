@@ -18,6 +18,16 @@ export CHROME_EXECUTABLE=google-chrome-stable
 
 export PATH=$PATH:/usr/local/bin/python
 
+
+# source submodules
+additional_zshrcs=("$HOME/.config/akq/.zshrc" "$HOME/.config/personal/.zshrc") 
+
+for file in $additional_zshrcs; do
+    if [ -f $file ]; then
+        source $file
+    fi
+done
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
