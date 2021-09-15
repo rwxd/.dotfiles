@@ -2,6 +2,9 @@
 
 version: '3'
 
+vars:
+  LIST_DIRS_COMMAND: find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | grep -v '\.'
+
 tasks:
   default:
     cmds:
@@ -12,7 +15,7 @@ tasks:
     desc: install dotfiles
     cmds:
       - |
-        for folder in `ls -d */`; do
+        for folder in `{{.LIST_DIRS_COMMAND}}`; do
           stow -v -t ~ $folder
         done
     silent: true
@@ -21,7 +24,7 @@ tasks:
     desc: clean dotfiles
     cmds:
       - |
-        for folder in `ls -d */`; do
+        for folder in `{{.LIST_DIRS_COMMAND}}`; do
           stow -v -D -t ~ $folder
         done
     silent: true
