@@ -2,8 +2,8 @@
 
 ## Tasks
 ```yaml
-* uninstall:        clean dotfiles
 * install:      install dotfiles
+* uninstall:    clean dotfiles
 ```
 
 ## Setup VIM
