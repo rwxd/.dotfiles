@@ -1,0 +1,6 @@
+[submodule "akq"]
+	path = akq
+	url = git@gitlab.akquinet.de:fwrage/.dotfiles-akq.git
+[submodule "personal"]
+	path = personal
+	url = git@github.com:rwxd/.dotfiles-personal.git
