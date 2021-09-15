@@ -1,6 +1,13 @@
 #!/bin/bash
+if ! command -v ansible-doc
+then
+    echo "ansible-doc not found, maybe source your venv?!"
+    exit 1
+fi
+
 export ANSIBLE_FORCE_COLOR="True"
 
 selected=`ansible-doc --list -j 2> /dev/null | jq 'keys[]' | sed 's/"//g' | fzf`
 
+#ansible-doc $selected "$@" | vim -c 'set syntax=yaml' -R -
 ansible-doc $selected "$@" | vim -c 'set syntax=yaml' -R -
