@@ -8,9 +8,7 @@ fi
 export ANSIBLE_FORCE_COLOR="True"
 
 selected=`ansible-doc --list -j 2> /dev/null | jq 'keys[]' | sed 's/"//g' | fzf`
-
 docs=`ansible-doc $selected "$@"`
-echo "$selected"
 
 if [ -n "$TMUX" ]
 then
