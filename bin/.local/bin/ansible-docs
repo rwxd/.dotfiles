@@ -1,6 +1,5 @@
 #!/bin/bash
-if ! command -v ansible-doc
-then
+if ! command -v ansible-doc; then
     echo "ansible-doc not found, maybe source your venv?!"
     exit 1
 fi
@@ -8,12 +7,13 @@ fi
 export ANSIBLE_FORCE_COLOR="True"
 
 selected=`ansible-doc --list -j 2> /dev/null | jq 'keys[]' | sed 's/"//g' | fzf`
-docs=`ansible-doc $selected "$@"`
+docs_command="ansible-doc $selected \"$@\""
 
-if [ -n "$TMUX" ]
-then
-    tmux neww -n "$selected" bash -c "echo \"$docs\" | vim -c 'set syntax=yaml' -R -"
+echo "Selected: $selected"
+
+if ! [ -z "$TMUX" ]; then
+    tmux neww -n "$selected" bash -c "PATH=$PATH $docs_command | vim -c 'set syntax=yaml' -R -"
 else
-    echo "$docs" | vim -c 'set syntax=yaml' -R -
+    eval $docs_command | vim -c 'set syntax=yaml' -R -
 fi
 
