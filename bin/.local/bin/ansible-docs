@@ -9,8 +9,6 @@ export ANSIBLE_FORCE_COLOR="True"
 selected=`ansible-doc --list -j 2> /dev/null | jq 'keys[]' | sed 's/"//g' | fzf`
 docs_command="ansible-doc $selected \"$@\""
 
-echo "Selected: $selected"
-
 if ! [ -z "$TMUX" ]; then
     tmux neww -n "$selected" bash -c "PATH=$PATH $docs_command | vim -c 'set syntax=yaml' -R -"
 else
