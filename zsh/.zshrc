@@ -16,7 +16,8 @@ export TERM="xterm-256color"
 
 export CHROME_EXECUTABLE=google-chrome-stable
 
-export PATH=$PATH:/usr/local/bin/python
+export PATH=$PATH:/usr/local/bin/
+export PATH=$PATH:$HOME/.local/bin/
 
 
 # source submodules
