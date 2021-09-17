@@ -31,7 +31,7 @@ for path in CWD.glob('**/requirements.y*ml'):
         ansible_requirements.append(yaml.safe_load(requirement))
 
 for requirement in ansible_requirements:
-    if 'roles' in requirement:
+    if 'roles' in requirement and 'scm' in requirement['role']:
         for role in requirement['roles']:
             match = REGEX_SCM_TO_NAME.search(role['scm'].replace('.git', ''))
             if match:
