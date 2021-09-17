@@ -15,6 +15,7 @@ export DEFAULT_USER=$USER
 export TERM="xterm-256color"
 
 export CHROME_EXECUTABLE=google-chrome-stable
+export ANSIBLE_ROLES_PATH=$HOME/dev/ansible-roles/
 
 export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:$HOME/.local/bin/
