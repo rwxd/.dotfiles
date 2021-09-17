@@ -21,6 +21,14 @@ export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/bin/
 
+# vscode server code executable
+if ! type "code" >/dev/null ; then
+    code_executable=$(find $HOME/.vscode-server/bin/ -executable -name "code" -quit -print0)
+    if [ -f "$code_executable" ]; then
+        PATH="$PATH:$code_executable"
+    fi
+fi
+
 # source submodules
 additional_zshrcs=("$HOME/.config/akq/.zshrc" "$HOME/.config/personal/.zshrc") 
 
