@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+CURRENT_DIR_NAME=$(basename "$PWD")
+
+echo $CURRENT_DIR_NAME
