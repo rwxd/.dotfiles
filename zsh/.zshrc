@@ -18,7 +18,7 @@ export CHROME_EXECUTABLE=google-chrome-stable
 
 export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:$HOME/.local/bin/
-
+export PATH=$PATH:$HOME/bin/
 
 # source submodules
 additional_zshrcs=("$HOME/.config/akq/.zshrc" "$HOME/.config/personal/.zshrc") 
