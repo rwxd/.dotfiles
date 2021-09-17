@@ -1,6 +1,6 @@
 # https://taskfile.dev
 
-version: '3'
+version: "3"
 
 vars:
   LIST_DIRS_COMMAND: find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | grep -v '\.'
@@ -10,7 +10,13 @@ tasks:
     cmds:
       - task -l
     silent: true
-  
+
+  setup:
+    desc: setup stuff
+    cmds:
+      - pip3 install -r requirements.txt -q
+    silent: true
+
   install:
     desc: install dotfiles
     cmds:
@@ -19,7 +25,7 @@ tasks:
           stow -v -t ~ $folder
         done
     silent: true
-  
+
   uninstall:
     desc: clean dotfiles
     cmds:
