@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 "exec" "$HOME/.dotfiles/.venv/bin/python3" "$0" "$@"
 
 from pathlib import Path
