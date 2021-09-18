@@ -19,7 +19,7 @@ order += "volume master"
 order += "tztime local"
 
 tztime local {
-        format = "%H:%M:%S %d-%m-%Y"
+        format = "%H:%M:%S %d.%m.%Y"
 }
 
 ethernet eth0 {
