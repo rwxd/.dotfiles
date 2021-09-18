@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+IGNORE_LIST=("$HOME/.tmux*" "$HOME/.vscode*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/.cache/*")
+ignore=()
+for i in "${IGNORE_LIST[@]}"; do
+    ignore+=("!" "-path" "$i")
+done
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/dev -mindepth 1 -maxdepth 5 -name '.git' -type d | sed 's/.git//g' | fzf)
+    selected=$(find ~/ -mindepth 1 -maxdepth 6 -name '.git' -type d "${ignore[@]}" | sed 's/.git//g' | fzf)
 fi
 
 if [[ -z $selected ]]; then
