@@ -35,7 +35,7 @@ exec --no-startup-id feh --bg-scale --random ~/wallpaper/
 
 # design
 gaps inner 20
-gaps outer 0
+gaps outer -20
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
