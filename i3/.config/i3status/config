@@ -38,7 +38,7 @@ memory {
 }
 
 disk "/" {
-        format = "%avail"
+        format = "/ %avail"
 }
 
 volume master {
