@@ -26,6 +26,15 @@ tasks:
         done
     silent: true
 
+  reinstall:
+    desc: reinstall dotfiles
+    cmds:
+      - |
+        for folder in `{{.LIST_DIRS_COMMAND}}`; do
+          stow -v --restow -t ~ $folder
+        done
+    silent: true
+
   uninstall:
     desc: clean dotfiles
     cmds:
