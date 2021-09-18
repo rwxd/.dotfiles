@@ -21,6 +21,9 @@ export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/bin/
 
+# tmux
+bindkey -s ^f "tmux-sessionizer\n"
+
 # vscode server code executable
 if ! type "code" >/dev/null ; then
     code_executable=$(find $HOME/.vscode-server/bin/ -executable -name "code" -quit -print0)
