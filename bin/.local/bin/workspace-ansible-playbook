@@ -6,23 +6,38 @@ import yaml
 import json
 import re
 from subprocess import check_output
+from configparser import ConfigParser
+from os import getenv
 
+DEV_PATH = Path(getenv('DEV_PATH') or Path().home().joinpath('dev/'))
 CWD = Path().cwd()
 CURRENT_DIR_NAME = CWD.name
 REGEX_SCM_TO_NAME = re.compile(r'([^\/]+$)')
+
+VENV_PATH = CWD.joinpath('.venv/')
+
 ROLES_PATH = Path.home().joinpath('dev/ansible-roles/')
+ANSIBLE_ROLES_PATH = Path().home().joinpath('.ansible/roles/')
+
 VSCODE_WORKSPACES_PATH = Path.home().joinpath('dev/vscode-workspaces/')
 VSCODE_WORKSPACE_FILE_PATH = VSCODE_WORKSPACES_PATH.joinpath(
     f'{CURRENT_DIR_NAME}.code-workspace'
 )
+
+ANSIBLE_CFG = CWD.joinpath('ansible.cfg')
+if ANSIBLE_CFG.exists():
+    print('Found ansible.cfg in current directory')
+    config = ConfigParser()
+    config.read(str(ANSIBLE_CFG))
+    if 'defaults' in config and 'roles_path' in config['defaults']:
+        ANSIBLE_ROLES_PATH = CWD.joinpath(config['defaults']['roles_path'])
 
 workspace = {
     'folders': [{'name': CURRENT_DIR_NAME, 'path': str(CWD)}],
     'settings': {
         '[yaml]': {'editor.defaultFormatter': 'tomaciazek.ansible'},
         '[yml]': {'editor.defaultFormatter': 'tomaciazek.ansible'},
-        'terminal.integrated.env.linux': {'ANSIBLE_ROLES_PATH': str(ROLES_PATH),},
-        'ansible.python.activationScript': str(CWD.joinpath('.venv/bin/activate'))
+        'ansible.python.activationScript': str(VENV_PATH.joinpath('bin/activate')),
     },
 }
 
@@ -33,16 +48,27 @@ for path in CWD.glob('**/requirements.y*ml'):
 
 for requirement in ansible_requirements:
     if 'roles' in requirement:
-        for role in [role for role in requirement['roles'] if 'scm' in role]:
-            match = REGEX_SCM_TO_NAME.search(role['scm'].replace('.git', ''))
+        for role in [
+            role
+            for role in requirement['roles']
+            if 'src' in role and 'scm' in role and role['scm'] == 'git'
+        ]:
+            match = REGEX_SCM_TO_NAME.search(role['src'].replace('.git', ''))
             if match:
                 name = match.group(0)
                 path = ROLES_PATH.joinpath(name)
                 workspace['folders'].append({'name': name, 'path': str(path)})
 
-                if not path.exists():
+                if path.exists():
+                    check_output(('git', '-C', str(path)))
+                else:
                     path.mkdir(parents=True, exist_ok=True)
                     check_output(('git', '-C', str(path), 'clone', role['scm'], '.'))
+
+                symlink_path = ANSIBLE_ROLES_PATH.joinpath(name)
+                if not symlink_path.exists():
+                    print(f'Created symlink: {str(symlink_path)} -> {str(path)}')
+                    symlink_path.symlink_to(path)
 
 VSCODE_WORKSPACES_PATH.mkdir(parents=True, exist_ok=True)
 with open(VSCODE_WORKSPACE_FILE_PATH, 'w+') as file:
