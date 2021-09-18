@@ -18,7 +18,9 @@ REGEX_SRC_TO_NAME = re.compile(r'([^\/]+$)')
 VENV_PATH = CWD.joinpath('.venv/')
 
 ROLES_PATH = Path.home().joinpath('dev/ansible-roles/')
-ANSIBLE_ROLES_PATH = Path().home().joinpath('.ansible/roles/')
+ANSIBLE_ROLES_PATH = Path(
+    getenv('ANSIBLE_ROLES_PATH') or Path().home().joinpath('.ansible/roles/')
+)
 
 VSCODE_WORKSPACES_PATH = Path.home().joinpath('dev/vscode-workspaces/')
 VSCODE_WORKSPACE_FILE_PATH = VSCODE_WORKSPACES_PATH.joinpath(
