@@ -103,9 +103,9 @@ for requirement in ansible_requirements:
                             f'Version {version} not found for role "{name}"'
                         )
                 else:
-                    if 'origin/master' in remotes:
+                    if 'master' in local:
                         git.run('switch', 'master')
-                    elif 'origin/main' in remotes:
+                    elif 'origin/main' in local:
                         git.run('switch', 'main')
 
                 symlink_path = ANSIBLE_ROLES_PATH.joinpath(name)
