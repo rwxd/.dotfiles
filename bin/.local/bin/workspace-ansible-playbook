@@ -42,7 +42,7 @@ for requirement in ansible_requirements:
 
                 if not path.exists():
                     path.mkdir(parents=True, exist_ok=True)
-                    check_output(('git', '-C', str(path), 'clone', role['scm']))
+                    check_output(('git', '-C', str(path), 'clone', role['scm'], '.'))
 
 VSCODE_WORKSPACES_PATH.mkdir(parents=True, exist_ok=True)
 with open(VSCODE_WORKSPACE_FILE_PATH, 'w+') as file:
