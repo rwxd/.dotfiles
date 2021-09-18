@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ -n "$TMUX" ]; then
     fzf_params="--reverse"
 else
@@ -5,6 +7,11 @@ else
 fi
 
 selected=`curl -s https://cht.sh/:list | grep "^\w*" | sort --unique | fzf $fzf_params`
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
 read -p "Enter Query: " query
 
 query=`echo $query | tr ' ' '+'`

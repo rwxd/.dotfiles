@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 if ! command -v ansible-doc; then
     echo "ansible-doc not found, maybe source your venv?!"
     exit 1
@@ -7,6 +8,11 @@ fi
 export ANSIBLE_FORCE_COLOR="True"
 
 selected=`ansible-doc --list -j 2> /dev/null | jq 'keys[]' | sed 's/"//g' | fzf`
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
 docs_command="ansible-doc $selected \"$@\""
 
 if ! [ -z "$TMUX" ]; then
