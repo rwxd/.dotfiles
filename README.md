@@ -5,6 +5,8 @@ If you don't have `GNU stow` you are a [...](https://www.youtube.com/watch?v=_bc
 ## Tasks
 ```yaml
 * install:      install dotfiles
+* reinstall:    reinstall dotfiles
+* setup:        setup stuff
 * uninstall:    clean dotfiles
 ```
 
