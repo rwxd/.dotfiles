@@ -31,7 +31,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # set background wallpaper
-exec --no-startup-id nitrogen --set-auto ~/wallpaper/ --random
+exec --no-startup-id feh --bg-scale --random ~/wallpaper/
 
 # design
 gaps inner 20
