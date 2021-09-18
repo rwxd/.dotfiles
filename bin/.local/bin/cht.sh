@@ -15,7 +15,7 @@ if [ $query != "\n" ] ; then
 fi
 
 if { [ -n "$TMUX" ]; } then
-    tmux neww -n "$selected" bash -c "echo \"curl cht.sh/$selected$query/\" & curl cht.sh/$selected$query & while [ : ]; do sleep 1; done"
+    tmux neww -n "$selected" bash -c "curl -s cht.sh/$selected$query | less"
 else
     curl -s cht.sh/$selected$query | less
 fi
