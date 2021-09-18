@@ -40,7 +40,9 @@ workspace = {
     'settings': {
         '[yaml]': {'editor.defaultFormatter': 'tomaciazek.ansible'},
         '[yml]': {'editor.defaultFormatter': 'tomaciazek.ansible'},
+        '[ansible]': {'editor.defaultFormatter': 'tomaciazek.ansible'},
         'ansible.python.activationScript': str(VENV_PATH.joinpath('bin/activate')),
+        'files.associations': {'yaml': 'ansible', 'yml': 'ansible'},
     },
 }
 
@@ -54,7 +56,7 @@ class Git:
 
 
 ansible_requirements = []
-for path in CWD.glob('**/requirements.y*ml'):
+for path in CWD.glob('*/*requirements.y*ml'):
     with open(path, 'r') as requirement:
         ansible_requirements.append(yaml.safe_load(requirement))
 
