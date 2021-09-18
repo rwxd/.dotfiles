@@ -8,7 +8,6 @@ import re
 from subprocess import check_output
 from configparser import ConfigParser
 from os import getenv
-from git import Repo, exc
 from subprocess import check_output
 
 DEV_PATH = Path(getenv('DEV_PATH') or Path().home().joinpath('dev/'))
@@ -58,11 +57,11 @@ for path in CWD.glob('**/requirements.y*ml'):
         ansible_requirements.append(yaml.safe_load(requirement))
 
 for requirement in ansible_requirements:
-    if 'roles' in requirement:
+    if requirement.get('roles'):
         for role in [
             role
             for role in requirement['roles']
-            if 'src' in role and 'scm' in role and role['scm'] == 'git'
+            if role.get('src') and role.get('scm') == 'git'
         ]:
             match = REGEX_SCM_TO_NAME.search(role['src'].replace('.git', ''))
             if match:
@@ -89,7 +88,7 @@ for requirement in ansible_requirements:
                 ]
                 tags = git.run('tag').splitlines()
 
-                if 'version' in role:
+                if role.get('version'):
                     version = role['version']
                     if version in tags:
                         print(f'Checking out to tag {version}')
