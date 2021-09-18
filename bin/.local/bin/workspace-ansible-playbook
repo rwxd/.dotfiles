@@ -8,6 +8,7 @@ import re
 from subprocess import check_output
 from configparser import ConfigParser
 from os import getenv
+from git import Repo, exc
 
 DEV_PATH = Path(getenv('DEV_PATH') or Path().home().joinpath('dev/'))
 CWD = Path().cwd()
@@ -58,12 +59,26 @@ for requirement in ansible_requirements:
                 name = match.group(0)
                 path = ROLES_PATH.joinpath(name)
                 workspace['folders'].append({'name': name, 'path': str(path)})
-
-                if path.exists():
-                    check_output(('git', '-C', str(path)))
+                if path.exists() and path.joinpath('.git/').exists():
+                    print(f'Repo "{name}" exists locally at {str(path)}')
+                    repo = Repo(str(path))
                 else:
+                    print(f'Cloning Repo "{name}" to {str(path)}')
                     path.mkdir(parents=True, exist_ok=True)
-                    check_output(('git', '-C', str(path), 'clone', role['scm'], '.'))
+                    repo = Repo.clone_from(role['src'], str(path))
+
+                for remote in repo.remotes:
+                    remote.fetch()
+
+                if 'version' in role:
+                    try:
+                        print(f'Checking out "{name}" to {role["version"]}')
+                        repo.git.execute(['git', 'checkout', role["version"]])
+                    except exc.GitCommandError as e:
+                        print(
+                            f'Can\'t checkout repository "{name}" to {role["version"]}'
+                        )
+                        raise
 
                 symlink_path = ANSIBLE_ROLES_PATH.joinpath(name)
                 if not symlink_path.exists():
