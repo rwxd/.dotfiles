@@ -13,7 +13,7 @@ from subprocess import check_output
 DEV_PATH = Path(getenv('DEV_PATH') or Path().home().joinpath('dev/'))
 CWD = Path().cwd()
 CURRENT_DIR_NAME = CWD.name
-REGEX_SCM_TO_NAME = re.compile(r'([^\/]+$)')
+REGEX_SRC_TO_NAME = re.compile(r'([^\/]+$)')
 
 VENV_PATH = CWD.joinpath('.venv/')
 
@@ -63,11 +63,10 @@ for requirement in ansible_requirements:
             for role in requirement['roles']
             if role.get('src') and role.get('scm') == 'git'
         ]:
-            match = REGEX_SCM_TO_NAME.search(role['src'].replace('.git', ''))
+            match = REGEX_SRC_TO_NAME.search(role['src'].replace('.git', ''))
             if match:
                 name = match.group(0)
                 path = ROLES_PATH.joinpath(name)
-                path = Path('/tmp/GitPython')
                 workspace['folders'].append({'name': name, 'path': str(path)})
                 git = Git(str(path))
 
