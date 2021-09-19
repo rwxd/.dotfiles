@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# sources all files with shebangs in the "$dirs" var
+
 dirs=(
     "$HOME/.dotfiles/personal/.config/personal/"
     "$HOME/.dotfiles/akq/.config/akq/"

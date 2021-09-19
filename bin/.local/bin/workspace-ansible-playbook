@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 "exec" "$HOME/.dotfiles/.venv/bin/python3" "$0" "$@"
 
+# creates a vs code workspace for ansible playbooks
+# git roles in the requirements.yml will be cloned, checked out, added to the workspace
+# & a symlink will be created to the role repository path
+
 from pathlib import Path
 import yaml
 import json

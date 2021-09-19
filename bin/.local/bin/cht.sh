@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# fuzzy searches cht.sh with additional query
 
 if [ -n "$TMUX" ]; then
     fzf_params="--reverse"

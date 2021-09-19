@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# fuzzy search ansible documentation
 
 if ! command -v ansible-doc; then
     echo "ansible-doc not found, maybe source your venv?!"

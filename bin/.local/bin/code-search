@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# fuzzy search for git repositories and vs code workspaces
 
 IGNORE_LIST=("$HOME/.tmux/*" "$HOME/.vscode/*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/.cache/*")
 ignore=()
