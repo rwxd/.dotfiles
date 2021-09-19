@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+dirs=(
+    "$HOME/.dotfiles/personal/.config/personal/"
+    "$HOME/.dotfiles/akq/.config/akq/"
+)
+
+for dir in $dirs; do
+    if [ -d $dir ]; then
+        for file in $(find $dir -maxdepth 1 -mindepth 1 -type f); do
+            first_line=$(head -n 1 $file)
+            if [[ $first_line =~ "#!" ]]; then
+                source "$file"
+            fi
+        done
+    fi
+done

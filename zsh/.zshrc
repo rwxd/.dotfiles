@@ -34,13 +34,9 @@ if ! type "code" >/dev/null ; then
 fi
 
 # source submodules
-additional_files=("$HOME/.config/akq/.zshrc" "$HOME/.config/personal/.zshrc", "$HOME/.config/personal/env") 
+source "$HOME/.local/bin/source-additional-files"
 
-for file in $additional_files; do
-    if [ -f $file ]; then
-        source $file
-    fi
-done
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
