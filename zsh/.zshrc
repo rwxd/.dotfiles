@@ -33,6 +33,8 @@ source "$HOME/.local/bin/code-server-integration"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
+alias cdf='cd $(cd-fuzzy)'
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
