@@ -5,27 +5,29 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
+##########################
+##### Path
+##########################
 export ZSH="$HOME/.oh-my-zsh"
-
-export DEFAULT_USER=$USER
-export TERM="xterm-256color"
-
-export CHROME_EXECUTABLE=google-chrome-stable
-
 export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/bin/
 
-export DOTFILES_DIR="$HOME/.dotfiles/"
+##########################
+##### ENV Vars
+##########################
+export DEFAULT_USER=$USER
+export TERM="xterm-256color"
 
-# tmux
+##########################
+##### Keybindings
+##########################
 bindkey -s ^f "tmux-sessionizer\n"
 
-# source submodules
+##########################
+##### Extra sources
+##########################
+# dotfile submodules
 source "$HOME/.local/bin/source-additional-files"
 
 # vs code
@@ -35,9 +37,26 @@ source "$HOME/.local/bin/code-server-integration"
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+# kubectl
+if type "kubectl" >/dev/null; then
+    source <(kubectl completion zsh)
+fi
 
+##########################
+##### Aliases
+##########################
+
+
+##########################
+##### custom functions
+##########################
 cdf(){cd $(cd-fuzzy "$1")}
+
+##########################
+##### zsh stuff
+##########################
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -59,8 +78,6 @@ source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
-
-source <(kubectl completion zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
