@@ -37,11 +37,6 @@ source "$HOME/.local/bin/code-server-integration"
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
-# kubectl
-if type "kubectl" >/dev/null; then
-    source <(kubectl completion zsh)
-fi
-
 ##########################
 ##### Aliases
 ##########################
@@ -56,7 +51,7 @@ cdf(){cd $(cd-fuzzy "$1")}
 ##### zsh stuff
 ##########################
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -78,6 +73,11 @@ source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+
+# kubectl
+if type "kubectl" >/dev/null; then
+    source <(kubectl completion zsh)
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
