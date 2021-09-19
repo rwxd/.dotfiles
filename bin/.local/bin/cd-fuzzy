@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # fuzzy finder for cd
+# you need a bash function like "cdf(){cd $(cd-fuzzy "$1")}" in your shell
 
 IGNORE_LIST=("*venv*" "*venv*" "*.git*" "*.cache*")
 ignore=()
@@ -14,4 +15,4 @@ else
 fi
 
 selected=$(find $startpoint -mindepth 1 -type d "${ignore[@]}" 2> /dev/null | fzf)
-cd $selected
+echo "$selected"
