@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# fuzzy finder for cd
+
+if [[ $# -eq 1 ]]; then
+    startpoint=$1
+else
+    startpoint="."
+fi
+
+    selected=$(find $startpoint -mindepth 1 -type d 2> /dev/null | fzf)
+
+
+cd $selected
