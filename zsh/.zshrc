@@ -31,6 +31,10 @@ source "$HOME/.local/bin/source-additional-files"
 # vs code
 source "$HOME/.local/bin/code-server-integration"
 
+# fzf
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 cdf(){cd $(cd-fuzzy "$1")}
