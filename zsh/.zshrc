@@ -25,16 +25,11 @@ export DOTFILES_DIR="$HOME/.dotfiles/"
 # tmux
 bindkey -s ^f "tmux-sessionizer\n"
 
-# vscode server code executable
-if ! type "code" >/dev/null ; then
-    code_executable=$(find $HOME/.vscode-server/bin/ -executable -name "code" -quit -print0)
-    if [ -f "$code_executable" ]; then
-        PATH="$PATH:$code_executable"
-    fi
-fi
-
 # source submodules
 source "$HOME/.local/bin/source-additional-files"
+
+# vs code
+source "$HOME/.local/bin/code-server-integration"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
