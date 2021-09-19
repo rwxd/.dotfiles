@@ -4,6 +4,7 @@
 dirs=(
     "$HOME/.dotfiles/personal/.config/personal/"
     "$HOME/.dotfiles/akq/.config/akq/"
+    "$HOME/.dotfiles/arch/.config/arch/"
 )
 
 for dir in $dirs; do

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export DOTFILES_DIR="$HOME/.dotfiles/"
+export CHROME_EXECUTABLE=google-chrome-stable
