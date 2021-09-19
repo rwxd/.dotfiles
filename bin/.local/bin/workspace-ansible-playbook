@@ -42,9 +42,11 @@ workspace = {
         '[yml]': {'editor.defaultFormatter': 'redhat.ansible'},
         '[ansible]': {'editor.defaultFormatter': 'redhat.ansible'},
         'files.associations': {'yaml': 'ansible', 'yml': 'ansible'},
-        'ansible.python.activationScript': str(VENV_PATH.joinpath('bin/activate')),
+        'ansible.python.interpreterPath': str(VENV_PATH.joinpath('bin/activate')),
         'python.terminal.activateEnvInCurrentTerminal': True,
+        'python.terminal.activateEnvironment': True,
     },
+    'extensions': {'recommendations': ['redhat.ansible']},
 }
 
 
