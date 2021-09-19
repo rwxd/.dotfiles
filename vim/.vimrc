@@ -31,7 +31,7 @@ endif
 call plug#begin('~/.vim/plugged')
 " Color Scheme
 Plug 'arcticicestudio/nord-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf'
 call plug#end()
 
 colorscheme nord
