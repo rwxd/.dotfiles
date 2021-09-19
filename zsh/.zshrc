@@ -34,9 +34,9 @@ if ! type "code" >/dev/null ; then
 fi
 
 # source submodules
-additional_zshrcs=("$HOME/.config/akq/.zshrc" "$HOME/.config/personal/.zshrc") 
+additional_files=("$HOME/.config/akq/.zshrc" "$HOME/.config/personal/.zshrc", "$HOME/.config/personal/env") 
 
-for file in $additional_zshrcs; do
+for file in $additional_files; do
     if [ -f $file ]; then
         source $file
     fi
