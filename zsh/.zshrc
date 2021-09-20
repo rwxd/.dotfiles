@@ -45,7 +45,9 @@ source "$HOME/.local/bin/code-server-integration"
 ##########################
 ##### custom functions
 ##########################
-cdf(){cd $(cd-fuzzy "$1")}
+cdf(){cd $(fuzzycd "$1")}
+
+fim(){vim $(fuzzyvim "$1")}
 
 ##########################
 ##### zsh stuff
