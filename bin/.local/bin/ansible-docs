@@ -8,7 +8,7 @@ fi
 
 export ANSIBLE_FORCE_COLOR="True"
 
-selected=`ansible-doc --list -j 2> /dev/null | jq 'keys[]' | sed 's/"//g' | fzf`
+selected=`ansible-doc --list -j 2> /dev/null | jq 'keys[]' | sed 's/"//g' | fzf --preview 'ansible-doc {}'`
 
 if [[ -z $selected ]]; then
     exit 0
