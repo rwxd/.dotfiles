@@ -34,8 +34,8 @@ source "$HOME/.local/bin/source-additional-files"
 source "$HOME/.local/bin/code-server-integration"
 
 # fzf
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
+#source /usr/share/fzf/completion.zsh
+#source /usr/share/fzf/key-bindings.zsh
 
 ##########################
 ##### Aliases
