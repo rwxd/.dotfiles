@@ -8,7 +8,7 @@ set nowrap
 
 " Show line number
 set number
-set norelativenumber
+set relativenumber
 
 set tabstop=4
 
