@@ -126,7 +126,8 @@ command! -nargs=0 Format :call CocAction('format')
 
 
 " keybindings
-:let mapleader = "\<Space>"
+":let mapleader = "\<Space>"
+map <SPACE> <Leader>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
