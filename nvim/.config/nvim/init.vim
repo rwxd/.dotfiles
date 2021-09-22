@@ -20,11 +20,17 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" copy to host
+"Plug 'fcpg/vim-osc52'
+
 " autocompletion in search
 Plug 'vim-scripts/SearchComplete'
 
 " nord theme
 Plug 'arcticicestudio/nord-vim'
+
+" A Tree-like side bar for better navigation
+Plug 'scrooloose/nerdtree'
 
 " lsp
 "Plug 'neovim/nvim-lspconfig'
@@ -63,11 +69,23 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 call plug#end()
+filetype plugin indent on
 colorscheme nord
 
-
 " keybindings
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
-nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+"nnoremap <silent>K :Lspsaga hover_doc<CR>
+"inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+"nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1 " Show hidden files in NerdTree buffer
+
+" Split windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+
+"vmap <C-c> y:Oscyank<cr>
+"xmap <F7> y:Oscyank<cr>
