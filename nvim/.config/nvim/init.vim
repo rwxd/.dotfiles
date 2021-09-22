@@ -53,10 +53,9 @@ Plug 'tpope/vim-fugitive'
 " Auto-close braces and scopes
 Plug 'jiangmiao/auto-pairs'
 
-" python
-" Plug 'zchee/deoplete-jedi'
-
-" telescope
+"" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
@@ -127,9 +126,13 @@ command! -nargs=0 Format :call CocAction('format')
 
 
 " keybindings
-"nnoremap <silent>K :Lspsaga hover_doc<CR>
-"inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
-"nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+:let mapleader = "\<Space>"
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1 " Show hidden files in NerdTree buffer
