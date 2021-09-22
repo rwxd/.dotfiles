@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
+os=$(lsb_release -d | awk -F"\t" '{print $2}')
+
 export DOTFILES_DIR="$HOME/.dotfiles/"
 export CHROME_EXECUTABLE=google-chrome-stable
 
-# fzf
-# source /usr/share/fzf/completion.zsh
-# source /usr/share/fzf/key-bindings.zsh
+
+if [[ "$os" == "Manjaro Linux" ]]; then
+	# fzf
+	source /usr/share/fzf/completion.zsh
+	source /usr/share/fzf/key-bindings.zsh
+fi
