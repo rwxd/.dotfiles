@@ -20,9 +20,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" copy to host
-"Plug 'fcpg/vim-osc52'
-
 " autocompletion in search
 Plug 'vim-scripts/SearchComplete'
 
@@ -66,7 +63,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc-json
 " coc-docker
 " coc-yaml
-
+" coc-bash
 
 call plug#end()
 filetype plugin indent on
@@ -86,6 +83,3 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-
-"vmap <C-c> y:Oscyank<cr>
-"xmap <F7> y:Oscyank<cr>
