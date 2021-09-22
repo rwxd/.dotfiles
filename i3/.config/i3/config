@@ -198,8 +198,8 @@ bindsym $mod+r mode "resize"
 ###################################
 
 for_window [class="^.*"] border pixel 1
-gaps inner 5
-gaps outer -5
+gaps inner 0
+gaps outer 0
 smart_borders on
 
 ####################################
