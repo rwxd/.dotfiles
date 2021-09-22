@@ -1,6 +1,6 @@
 {
-	"coc.preferences.formatOnSaveFiletypes": ["py", "yaml", "json"],
+	"coc.preferences.formatOnSaveFiletypes": ["py", "yaml", "yml", "json", "go", "sh"],
 	"python.linting.flake8Enabled": true,
 	"python.formatting.provider" : "black",
-	"python.formatting.blackArgs": ["--skip-string-normalization"],
+	"python.formatting.blackArgs": ["--skip-string-normalization"]
 }
