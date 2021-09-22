@@ -33,6 +33,9 @@ Plug 'scrooloose/nerdtree'
 "Plug 'neovim/nvim-lspconfig'
 "Plug 'glepnir/lspsaga.nvim'
 
+" Games
+Plug 'ThePrimeagen/vim-be-good'
+
 " A fuzzy file finder
 Plug 'kien/ctrlp.vim'
 
@@ -53,6 +56,10 @@ Plug 'jiangmiao/auto-pairs'
 
 " python
 " Plug 'zchee/deoplete-jedi'
+
+" telescope
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Intellisense engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
