@@ -131,12 +131,24 @@ map <SPACE> <Leader>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fl <cmd>Telescope file_browser<cr>
+nnoremap <leader>fgc <cmd>Telescope git_commits<cr>
+nnoremap <leader>fgb <cmd>Telescope git_branches<cr>
+nnoremap <leader>fgi <cmd>Telescope git_status<cr>
+nnoremap <leader>fgs <cmd>Telescope git_stash<cr>
+"nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fd <cmd>Telescope lsp_definitions<cr>
+nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 
+
+" nerdtree
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1 " Show hidden files in NerdTree buffer
+
+" nerdcommenter
+
 
 " Split windows
 map <C-j> <C-W>j
