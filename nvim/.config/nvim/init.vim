@@ -62,6 +62,9 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " language packs
 Plug 'sheerun/vim-polyglot'
 
+" git
+Plug 'kdheepak/lazygit.nvim'
+
 " Intellisense engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Coc Plugins
@@ -128,6 +131,9 @@ command! -nargs=0 Format :call CocAction('format')
 " keybindings
 ":let mapleader = "\<Space>"
 map <SPACE> <Leader>
+
+" lazygit
+nnoremap <silent> <leader>gg :LazyGit<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
