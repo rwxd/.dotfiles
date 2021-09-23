@@ -23,6 +23,7 @@ export TERM="xterm-256color"
 ##### Keybindings
 ##########################
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^g "lazygit\n"
 
 ##########################
 ##### Extra sources
