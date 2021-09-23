@@ -64,65 +64,69 @@ class Git:
 
 ansible_requirements = []
 for path in CWD.glob('*/*requirements.y*ml'):
-    with open(path, 'r') as requirement:
-        ansible_requirements.append(yaml.safe_load(requirement))
+    if not 'collections' in str(path):
+        with open(path, 'r') as requirement:
+            ansible_requirements.append(yaml.safe_load(requirement))
 
 for requirement in ansible_requirements:
-    if requirement.get('roles'):
-        for role in [
-            role
-            for role in requirement['roles']
-            if role.get('src') and role.get('scm') == 'git'
-        ]:
-            match = REGEX_SRC_TO_NAME.search(role['src'].replace('.git', ''))
-            if match:
-                name = match.group(0)
-                path = ROLES_PATH.joinpath(name)
-                workspace['folders'].append({'name': name, 'path': str(path)})
-                git = Git(str(path))
+    if type(requirement) == list:
+        roles = requirement
+    else:
+        roles = requirement.get('roles')
+    for role in [
+        role
+        for role in roles
+        if role.get('src') and role.get('scm') == 'git'
+    ]:
+        match = REGEX_SRC_TO_NAME.search(role['src'].replace('.git', ''))
+        if match:
+            name = match.group(0)
+            path = ROLES_PATH.joinpath(name)
+            workspace['folders'].append({'name': name, 'path': str(path)})
+            git = Git(str(path))
 
-                if path.exists() and path.joinpath('.git/').exists():
-                    print(f'Repo "{name}" exists locally at {str(path)}')
+            if path.exists() and path.joinpath('.git/').exists():
+                print(f'Repo "{name}" exists locally at {str(path)}')
+            else:
+                print(f'Cloning Repo "{name}" to {str(path)}')
+                path.mkdir(parents=True, exist_ok=True)
+                git.run('clone', role['src'], '.')
+
+            git.run('fetch', '--all')
+            remotes = [
+                r.replace('*', '').strip()
+                for r in git.run('branch', '-r').splitlines()
+            ]
+            local = [
+                l.replace('*', '').strip() for l in git.run('branch').splitlines()
+            ]
+            tags = git.run('tag').splitlines()
+
+            if role.get('version'):
+                version = role['version']
+                if version in tags:
+                    print(f'Checking out to tag {version}')
+                    git.run('checkout', version)
+                elif version in local:
+                    print(f'Checking out to local branch {version}')
+                    git.run('switch', version)
+                elif f'origin/{version}' in remotes:
+                    print(f'Checking out remote branch {version}')
+                    git.run('switch', '-t', f'remotes/origin/{version}')
                 else:
-                    print(f'Cloning Repo "{name}" to {str(path)}')
-                    path.mkdir(parents=True, exist_ok=True)
-                    git.run('clone', role['src'], '.')
+                    raise ValueError(
+                        f'Version {version} not found for role "{name}"'
+                    )
+            else:
+                if 'master' in local:
+                    git.run('switch', 'master')
+                elif 'origin/main' in local:
+                    git.run('switch', 'main')
 
-                git.run('fetch', '--all')
-                remotes = [
-                    r.replace('*', '').strip()
-                    for r in git.run('branch', '-r').splitlines()
-                ]
-                local = [
-                    l.replace('*', '').strip() for l in git.run('branch').splitlines()
-                ]
-                tags = git.run('tag').splitlines()
-
-                if role.get('version'):
-                    version = role['version']
-                    if version in tags:
-                        print(f'Checking out to tag {version}')
-                        git.run('checkout', version)
-                    elif version in local:
-                        print(f'Checking out to local branch {version}')
-                        git.run('switch', version)
-                    elif f'origin/{version}' in remotes:
-                        print(f'Checking out remote branch {version}')
-                        git.run('switch', '-t', f'remotes/origin/{version}')
-                    else:
-                        raise ValueError(
-                            f'Version {version} not found for role "{name}"'
-                        )
-                else:
-                    if 'master' in local:
-                        git.run('switch', 'master')
-                    elif 'origin/main' in local:
-                        git.run('switch', 'main')
-
-                symlink_path = ANSIBLE_ROLES_PATH.joinpath(name)
-                if not symlink_path.exists():
-                    print(f'Created symlink: {str(symlink_path)} -> {str(path)}')
-                    symlink_path.symlink_to(path)
+            symlink_path = ANSIBLE_ROLES_PATH.joinpath(name)
+            if not symlink_path.exists():
+                print(f'Created symlink: {str(symlink_path)} -> {str(path)}')
+                symlink_path.symlink_to(path)
 
 VSCODE_WORKSPACES_PATH.mkdir(parents=True, exist_ok=True)
 with open(VSCODE_WORKSPACE_FILE_PATH, 'w+') as file:
