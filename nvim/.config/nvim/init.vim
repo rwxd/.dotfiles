@@ -130,7 +130,7 @@ command! -nargs=0 Format :call CocAction('format')
 map <SPACE> <Leader>
 
 " lazygit
-nnoremap <silent> <leader>gg :LazyGit<CR>
+nnoremap <silent> <C-g> :LazyGit<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
