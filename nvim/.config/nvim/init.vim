@@ -41,9 +41,6 @@ Plug 'kien/ctrlp.vim'
 " Comment/Uncomment tool
 Plug 'scrooloose/nerdcommenter'
 
-" A Tree-like side bar for better navigation
-Plug 'scrooloose/nerdtree'
-
 " Better syntax-highlighting for filetypes in vim
 Plug 'sheerun/vim-polyglot'
 
