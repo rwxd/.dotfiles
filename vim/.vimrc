@@ -3,6 +3,8 @@
 syntax on
 set autoindent
 
+set mouse=a
+
 " Don't wrap text
 set nowrap
 
