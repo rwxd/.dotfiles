@@ -1,6 +1,7 @@
 {
 	"coc.preferences.formatOnSaveFiletypes": ["py", "yaml", "yml", "json", "go", "sh"],
 	"python.linting.flake8Enabled": true,
+	"python.linting.flake8Args": ["--inline-quotes \"'\"", "--max-line-length 180"],
 	"python.linting.mypyEnabled": true,
 	"python.formatting.provider" : "black",
 	"python.formatting.blackArgs": ["--skip-string-normalization"]
