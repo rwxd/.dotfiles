@@ -24,6 +24,7 @@ export TERM="xterm-256color"
 ##########################
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^g "lazygit\n"
+bindkey -s ^v ". .venv/bin/activate\n"
 
 ##########################
 ##### Extra sources
