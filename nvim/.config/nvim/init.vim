@@ -74,6 +74,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc-docker
 " coc-yaml
 " coc-bash
+" coc-go
 " @yaegassy/coc-ansible
 
 call plug#end()
