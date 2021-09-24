@@ -79,7 +79,7 @@ filetype plugin indent on
 colorscheme nord
 
 au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
-au BufRead,BufNewFile site-*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */site-*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */tasks/*.yml set filetype=yaml.ansible
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -135,10 +135,11 @@ nnoremap <silent> <C-g> :LazyGit<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fl <cmd>Telescope file_browser<cr>
-nnoremap <leader>fgc <cmd>Telescope git_commits<cr>
-nnoremap <leader>fgb <cmd>Telescope git_branches<cr>
-nnoremap <leader>fgi <cmd>Telescope git_status<cr>
-nnoremap <leader>fgs <cmd>Telescope git_stash<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+"nnoremap <leader>fgc <cmd>Telescope git_commits<cr>
+"nnoremap <leader>fgb <cmd>Telescope git_branches<cr>
+"nnoremap <leader>fgi <cmd>Telescope git_status<cr>
+"nnoremap <leader>fgs <cmd>Telescope git_stash<cr>
 "nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
