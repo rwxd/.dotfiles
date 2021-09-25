@@ -32,7 +32,7 @@ VSCODE_WORKSPACE_FILE_PATH = VSCODE_WORKSPACES_PATH.joinpath(
 )
 
 TMUX_WORKSPACE_PATH = Path.home().joinpath('dev/tmux-workspaces')
-TMUX_WORKSPACE_FILE_PATH = TMUX_WORKSPACE_PATH.joinpath(f'{CURRENT_DIR_NAME}.yml')
+TMUX_WORKSPACE_FILE_PATH = TMUX_WORKSPACE_PATH.joinpath(f'{CURRENT_DIR_NAME}.tmux-workspace.yml')
 
 ANSIBLE_CFG = CWD.joinpath('ansible.cfg')
 if ANSIBLE_CFG.exists():
