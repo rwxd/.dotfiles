@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if ! [[ -d ".venv/" ]]; then
+	python3 -m virtualenv .venv
+
+	if [[ -f "requirements.txt" ]]; then
+		python3 -m pip install -r requirements.txt
+	fi
+
+fi
+
+. .venv/bin/activate
+

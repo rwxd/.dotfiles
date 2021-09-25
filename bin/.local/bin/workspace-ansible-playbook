@@ -31,6 +31,9 @@ VSCODE_WORKSPACE_FILE_PATH = VSCODE_WORKSPACES_PATH.joinpath(
     f'{CURRENT_DIR_NAME}.code-workspace'
 )
 
+TMUX_WORKSPACE_PATH = Path.home().joinpath('dev/tmux-workspaces')
+TMUX_WORKSPACE_FILE_PATH = TMUX_WORKSPACE_PATH.joinpath(f'{CURRENT_DIR_NAME}.yml')
+
 ANSIBLE_CFG = CWD.joinpath('ansible.cfg')
 if ANSIBLE_CFG.exists():
     print('Found ansible.cfg in current directory')
@@ -39,7 +42,7 @@ if ANSIBLE_CFG.exists():
     if 'defaults' in config and 'roles_path' in config['defaults']:
         ANSIBLE_ROLES_PATH = CWD.joinpath(config['defaults']['roles_path'])
 
-workspace = {
+vscode_workspace = {
     'folders': [{'name': CURRENT_DIR_NAME, 'path': str(CWD)}],
     'settings': {
         '[yaml]': {'editor.defaultFormatter': 'redhat.ansible'},
@@ -51,6 +54,17 @@ workspace = {
         'python.terminal.activateEnvironment': True,
     },
     'extensions': {'recommendations': ['redhat.ansible']},
+}
+
+tmux_workspace = {
+    'session_name': CURRENT_DIR_NAME,
+    'windows': [
+        {
+            'window_name': CURRENT_DIR_NAME,
+            'layout': 'tiled',
+            'shell_command_before': f'cd {str(CWD)} && source machvenv',
+        }
+    ],
 }
 
 
@@ -74,16 +88,21 @@ for requirement in ansible_requirements:
     else:
         roles = requirement.get('roles')
     for role in [
-        role
-        for role in roles
-        if role.get('src') and role.get('scm') == 'git'
+        role for role in roles if role.get('src') and role.get('scm') == 'git'
     ]:
         match = REGEX_SRC_TO_NAME.search(role['src'].replace('.git', ''))
         if match:
             name = match.group(0)
             path = ROLES_PATH.joinpath(name)
-            workspace['folders'].append({'name': name, 'path': str(path)})
             git = Git(str(path))
+            vscode_workspace['folders'].append({'name': name, 'path': str(path)})
+            tmux_workspace['windows'].append(
+                {
+                    'window_name': name,
+                    'layout': 'tiled',
+                    'shell_command_before': f'cd {str(path)} && source machvenv',
+                }
+            )
 
             if path.exists() and path.joinpath('.git/').exists():
                 print(f'Repo "{name}" exists locally at {str(path)}')
@@ -94,12 +113,9 @@ for requirement in ansible_requirements:
 
             git.run('fetch', '--all')
             remotes = [
-                r.replace('*', '').strip()
-                for r in git.run('branch', '-r').splitlines()
+                r.replace('*', '').strip() for r in git.run('branch', '-r').splitlines()
             ]
-            local = [
-                l.replace('*', '').strip() for l in git.run('branch').splitlines()
-            ]
+            local = [l.replace('*', '').strip() for l in git.run('branch').splitlines()]
             tags = git.run('tag').splitlines()
 
             if role.get('version'):
@@ -114,9 +130,7 @@ for requirement in ansible_requirements:
                     print(f'Checking out remote branch {version}')
                     git.run('switch', '-t', f'remotes/origin/{version}')
                 else:
-                    raise ValueError(
-                        f'Version {version} not found for role "{name}"'
-                    )
+                    raise ValueError(f'Version {version} not found for role "{name}"')
             else:
                 if 'master' in local:
                     git.run('switch', 'master')
@@ -130,4 +144,7 @@ for requirement in ansible_requirements:
 
 VSCODE_WORKSPACES_PATH.mkdir(parents=True, exist_ok=True)
 with open(VSCODE_WORKSPACE_FILE_PATH, 'w+') as file:
-    json.dump(workspace, file, indent=2)
+    json.dump(vscode_workspace, file, indent=2)
+TMUX_WORKSPACE_PATH.mkdir(parents=True, exist_ok=True)
+with open(TMUX_WORKSPACE_FILE_PATH, 'w+') as file:
+    yaml.safe_dump(tmux_workspace, file)
