@@ -81,6 +81,11 @@ call plug#end()
 filetype plugin indent on
 colorscheme nord
 
+" python neovim
+let g:python_host_prog = '~/.venvs/neovim2/bin/python'
+let g:python3_host_prog = '~/.venvs/neovim3/bin/python'
+
+" ansible
 au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */site-*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */tasks/*.yml set filetype=yaml.ansible
