@@ -11,15 +11,25 @@ done
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ -mindepth 1 -maxdepth 6 -name '.git' -type d "${ignore[@]}" | sed 's/.git//g' | fzf)
+    files=$(
+        find ~/ -mindepth 1 -maxdepth 6 -name '.git' -type d "${ignore[@]}" 2> /dev/null | sed 's/.git//g' && \
+        find ~/dev/tmux-workspaces/ -mindepth 1 -maxdepth 1 -name "*.tmux-workspace.yml" -type f "${ignore[@]}" 2> /dev/null 
+    )
+    selected=$(fzf <<< ${files[@]} | sort -u)
 fi
 
 if [[ -z $selected ]]; then
     exit 0
 fi
 
+if [[ $selected == *".tmux-workspace.yml"* ]]; then
+  DISABLE_AUTO_TITLE='true' tmuxp load -y "$selected"
+  exit 0
+fi
+
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
+
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
     exit 0
