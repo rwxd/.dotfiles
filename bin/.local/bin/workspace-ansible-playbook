@@ -62,7 +62,8 @@ tmux_workspace = {
         {
             'window_name': CURRENT_DIR_NAME,
             'layout': 'tiled',
-            'shell_command_before': f'cd {str(CWD)} && source machvenv',
+            'start_directory': str(CWD),
+            'shell_command_before': 'source machvenv',
         }
     ],
 }
@@ -100,7 +101,8 @@ for requirement in ansible_requirements:
                 {
                     'window_name': name,
                     'layout': 'tiled',
-                    'shell_command_before': f'cd {str(path)} && source machvenv',
+                    'start_directory': str(path),
+                    'shell_command_before': 'source machvenv',
                 }
             )
 
