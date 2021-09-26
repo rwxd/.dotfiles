@@ -53,6 +53,10 @@ bindsym XF86AudioPrev exec playerctl previous
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+
+# screenshot
+bindsym Control+Shift+x exec --no-startup-id flameshot gui
+
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 
