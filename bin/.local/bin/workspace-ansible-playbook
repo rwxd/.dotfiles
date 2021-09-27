@@ -58,6 +58,7 @@ vscode_workspace = {
 
 tmux_workspace = {
     'session_name': CURRENT_DIR_NAME,
+    'start_directory': str(CWD),
     'windows': [
         {
             'window_name': CURRENT_DIR_NAME,
