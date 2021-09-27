@@ -5,11 +5,13 @@ requirements=$(find . -mindepth 1 -maxdepth 2 -name "requirements*.txt")
 if ! [[ -d ".venv/" ]]; then
 	echo "creating venv"
 	python3 -m virtualenv .venv
-
-	for requirement in "$requirements"; do
-		echo "installing $requirement"
-		python -m pip install -r $requirement
-	done
+	
+	if ! [[ -z $requirements ]]; then
+		for requirement in "$requirements"; do
+			echo "installing $requirement"
+			python -m pip install -r $requirement
+		done
+	fi
 fi
 
 echo "sourcing venv"
