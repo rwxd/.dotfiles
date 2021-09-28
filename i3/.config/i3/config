@@ -61,7 +61,7 @@ bindsym Control+Shift+x exec --no-startup-id flameshot gui
 # bindsym $mod+d exec --no-startup-id dmenu_run
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id rofi -show drun -config ~/.config/rofi/nord.rasi
 
 ###################################
 ########## movement
