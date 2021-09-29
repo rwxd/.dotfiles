@@ -48,6 +48,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
+Plug 'rhysd/git-messenger.vim'
 
 " Auto-close braces and scopes
 " Plug 'jiangmiao/auto-pairs'
@@ -70,7 +71,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc-pyright
 " coc-prettier
 " coc-git
-" coc-json
+" coc-jsoc
 " coc-docker
 " coc-yaml
 " coc-bash
@@ -80,6 +81,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 filetype plugin indent on
 colorscheme nord
+
+
+lua require("rwxd")
 
 " python neovim
 let g:python_host_prog = '~/.venvs/neovim2/bin/python'
@@ -144,16 +148,12 @@ nnoremap <silent> <C-g> :LazyGit<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fl <cmd>Telescope file_browser<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-"nnoremap <leader>fgc <cmd>Telescope git_commits<cr>
-"nnoremap <leader>fgb <cmd>Telescope git_branches<cr>
-"nnoremap <leader>fgi <cmd>Telescope git_status<cr>
-"nnoremap <leader>fgs <cmd>Telescope git_stash<cr>
-"nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fd <cmd>Telescope lsp_definitions<cr>
 nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 
+nnoremap <leader>dot :lua require('rwxd.telescope').search_dotfiles()<CR>
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
