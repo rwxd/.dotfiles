@@ -24,6 +24,9 @@ call plug#begin('~/.vim/plugged')
 " autocompletion in search
 Plug 'vim-scripts/SearchComplete'
 
+" color
+Plug 'junegunn/rainbow_parentheses.vim'
+
 " nord theme
 Plug 'arcticicestudio/nord-vim'
 
