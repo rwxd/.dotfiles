@@ -33,6 +33,9 @@ Plug 'arcticicestudio/nord-vim'
 " A Tree-like side bar for better navigation
 Plug 'scrooloose/nerdtree'
 
+" whitespace shit
+Plug 'ntpeters/vim-better-whitespace'
+
 " lsp
 "Plug 'neovim/nvim-lspconfig'
 "Plug 'glepnir/lspsaga.nvim'
