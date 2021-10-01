@@ -8,7 +8,7 @@ if ! [[ -d ".venv/" ]]; then
 	. .venv/bin/activate
 
 	if ! [[ -z $requirements ]]; then
-		for requirement in "$requirements"; do
+		for requirement in "${requirements[@]}"; do
 			echo "installing $requirement"
 			python -m pip install -r $requirement
 		done
