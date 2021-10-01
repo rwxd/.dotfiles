@@ -1,6 +1,7 @@
 lua require("rwxd")
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fv <cmd>Telescope git_files<cr>
 nnoremap <leader>fl <cmd>Telescope file_browser<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
