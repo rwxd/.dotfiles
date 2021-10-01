@@ -43,7 +43,6 @@ source "$HOME/.local/bin/code-server-integration"
 ##### Aliases
 ##########################
 
-
 ##########################
 ##### custom functions
 ##########################
