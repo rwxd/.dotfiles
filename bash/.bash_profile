@@ -6,6 +6,8 @@ SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 export PATH=$HOME/local/bin:$PATH
 
+eval "$(ssh-agent)"
+
 # source submodules
 source "$HOME/.local/bin/source-additional-files"
 
