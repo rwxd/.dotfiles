@@ -12,8 +12,8 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     files=$(
-        find ~/ -mindepth 1 -maxdepth 6 -name '.git' -type d "${ignore[@]}" 2> /dev/null | sed 's/.git//g' && \
-        find ~/dev/tmux-workspaces/ -mindepth 1 -maxdepth 1 -name "*.tmux-workspace.yml" -type f "${ignore[@]}" 2> /dev/null 
+        find ~/ -mindepth 1 -maxdepth 6 -name '.git' -type d "${ignore[@]}" 2> /dev/null | sed 's/\.git//g' && \
+        find ~/dev/tmux-workspaces/ -mindepth 1 -maxdepth 1 -name "*.tmux-workspace.yml" -type f "${ignore[@]}" 2> /dev/null
     )
     selected=$(fzf <<< ${files[@]} | sort -u)
 fi
