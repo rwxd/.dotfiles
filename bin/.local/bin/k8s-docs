@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if ! command -v kubectl; then
+    echo "kubectl command not found"
+    exit 1
+fi
+
+selected=`kubectl api-resources -o name --sort-by="name" 2> /dev/null | fzf --preview 'kubectl explain {}'`
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+docs_command="kubectl explain $selected $@"
+if ! [ -z "$TMUX" ]; then
+    tmux neww -n "$selected" bash -c "$docs_command | less"
+else
+    eval $docs_command
+fi
