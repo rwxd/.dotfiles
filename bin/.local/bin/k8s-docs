@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+ set -e
+
 if ! command -v kubectl; then
     echo "kubectl command not found"
     exit 1
