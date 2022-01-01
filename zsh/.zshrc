@@ -44,7 +44,8 @@ source "$HOME/.local/bin/code-server-integration"
 ##### Aliases
 ##########################
 
-alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
+alias asciicast2gif="docker run --rm -v $PWD:/data asciinema/asciicast2gif"
+alias petname="docker run --rm fjolsvin/petname"
 
 ##########################
 ##### custom functions
