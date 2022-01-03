@@ -2,7 +2,7 @@
 # fuzzy search directories to open with tmux
 # if a session is already present it just switches to it
 
-IGNORE_LIST=("$HOME/.tmux/*" "$HOME/.vscode/*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/.cache/*")
+IGNORE_LIST=("$HOME/.tmux/*" "$HOME/.vscode/*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/.cache/*" ".venv/")
 ignore=()
 for i in "${IGNORE_LIST[@]}"; do
     ignore+=("!" "-path" "$i")
