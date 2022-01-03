@@ -12,6 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/bin/
+export PATH=$PATH:$HOME/go/bin
 
 ##########################
 ##### ENV Vars
@@ -42,6 +43,9 @@ source "$HOME/.local/bin/code-server-integration"
 ##########################
 ##### Aliases
 ##########################
+
+alias asciicast2gif="docker run --rm -v $PWD:/data asciinema/asciicast2gif"
+alias petname="docker run --rm fjolsvin/petname"
 
 ##########################
 ##### custom functions
