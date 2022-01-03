@@ -86,5 +86,10 @@ fi
 if type "helm" >/dev/null; then
     source <(helm completion zsh)
 fi
+
+# argocd
+if type "argocd" >/dev/null; then
+    source <(argocd completion zsh)
+fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
