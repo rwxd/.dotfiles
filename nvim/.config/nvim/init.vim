@@ -72,6 +72,11 @@ Plug 'sheerun/vim-polyglot'
 " git
 Plug 'kdheepak/lazygit.nvim'
 
+" markdown preview
+" pacman -S glow
+" :GlowInstall
+Plug 'ellisonleao/glow.nvim'
+
 " Intellisense engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Coc Plugins
@@ -138,3 +143,6 @@ vnoremap K :m '<-2<CR>gv=gv
 
 " make an empty line
 xnoremap <leader>p "_dP
+
+" glow
+noremap <leader>m :Glow<CR>
