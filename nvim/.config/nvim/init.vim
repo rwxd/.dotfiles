@@ -22,7 +22,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " autocompletion in search
-Plug 'vim-scripts/SearchComplete'
+" Plug 'vim-scripts/SearchComplete'
 
 " color
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -33,31 +33,19 @@ Plug 'arcticicestudio/nord-vim'
 " A Tree-like side bar for better navigation
 Plug 'scrooloose/nerdtree'
 
-" whitespace shit
+" show bad whitespace in red
 Plug 'ntpeters/vim-better-whitespace'
 
-" lsp
+" nvim lsp
 "Plug 'neovim/nvim-lspconfig'
 "Plug 'glepnir/lspsaga.nvim'
-
-" Games
-Plug 'ThePrimeagen/vim-be-good'
-
-" A fuzzy file finder
-Plug 'kien/ctrlp.vim'
-
-" Comment/Uncomment tool
-Plug 'scrooloose/nerdcommenter'
-
-" Better syntax-highlighting for filetypes in vim
-Plug 'sheerun/vim-polyglot'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/git-messenger.vim'
 
 " Auto-close braces and scopes
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 "" telescope
 Plug 'nvim-lua/popup.nvim'
@@ -66,31 +54,32 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-" language packs
-Plug 'sheerun/vim-polyglot'
-
 " git
 Plug 'kdheepak/lazygit.nvim'
 
 " markdown preview
-" pacman -S glow
-" :GlowInstall
+"" pacman -S glow
+"" :GlowInstall
 Plug 'ellisonleao/glow.nvim'
 
-" Intellisense engine
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Coc Plugins
-" coc-pyright
-" coc-prettier
-" coc-git
-" coc-jsoc
-" coc-docker
-" coc-yaml
-" coc-bash
-" coc-go
-" @yaegassy/coc-ansible
+" Coc
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 
 call plug#end()
+
+let g:coc_global_extensions = [
+            \ 'coc-pyright',
+            \ 'coc-prettier',
+            \ 'coc-git',
+            \ 'coc-json',
+            \ 'coc-docker',
+            \ 'coc-yaml',
+            \ 'coc-html',
+            \ 'coc-sh',
+            \ 'coc-go',
+            \ '@yaegassy/coc-ansible',
+            \ ]
+
 filetype plugin indent on
 colorscheme nord
 
