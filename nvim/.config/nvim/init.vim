@@ -9,10 +9,29 @@ set number
 set relativenumber
 set tabstop=4
 
-set colorcolumn=120
+set colorcolumn=100
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
+
+" Nice menu when typing `:find *.py`
+set wildmode=longest,list,full
+set wildmenu
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=750
+
+" Give more space for displaying messages.
+set cmdheight=1
 
 " plugins
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -96,19 +115,6 @@ au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */site-*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */tasks/*.yml set filetype=yaml.ansible
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
 " keybindings
@@ -137,3 +143,8 @@ xnoremap <leader>p "_dP
 
 " glow
 noremap <leader>m :Glow<CR>
+
+" Quickly edit/reload this configuration file
+nnoremap gev :edit $MYVIMRC<CR>
+nnoremap gsv :source $MYVIMRC<CR>
+
