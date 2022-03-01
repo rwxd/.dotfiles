@@ -6,4 +6,4 @@ if ! timeout 3s xset q &>/dev/null; then
     exit 1
 fi
 
-echo "Semes to work :)"
+echo "Seems to work :)"
