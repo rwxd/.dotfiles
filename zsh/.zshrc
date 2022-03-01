@@ -5,9 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
 ##########################
 ##### Path
 ##########################
+
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/usr/local/bin/
 export PATH=$PATH:$HOME/.local/bin/
@@ -15,22 +17,28 @@ export PATH=$PATH:$HOME/bin/
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/usr/local/go/bin
 
+
 ##########################
 ##### ENV Vars
 ##########################
+
 export DEFAULT_USER=$USER
 export TERM="xterm-256color"
+
 
 ##########################
 ##### Keybindings
 ##########################
+
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^g "lazygit\n"
 bindkey -s ^v "source machvenv\n"
 
+
 ##########################
 ##### Extra sources
 ##########################
+
 # dotfile submodules
 source "$HOME/.local/bin/source-additional-files"
 
@@ -41,6 +49,7 @@ source "$HOME/.local/bin/code-server-integration"
 #source /usr/share/fzf/completion.zsh
 #source /usr/share/fzf/key-bindings.zsh
 
+
 ##########################
 ##### Aliases
 ##########################
@@ -48,12 +57,14 @@ source "$HOME/.local/bin/code-server-integration"
 alias asciicast2gif="docker run --rm -v $PWD:/data asciinema/asciicast2gif"
 alias petname="docker run --rm fjolsvin/petname"
 
+
 ##########################
 ##### custom functions
 ##########################
 cdf(){cd $(fuzzycd "$1")}
 
 fim(){vim $(fuzzyvim "$1")}
+
 
 ##########################
 ##### zsh stuff
@@ -82,19 +93,29 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 
-# kubectl
+
+##########################
+##### autocompletions
+##########################
+
 if type "kubectl" >/dev/null; then
     source <(kubectl completion zsh)
 fi
 
-# helm
 if type "helm" >/dev/null; then
     source <(helm completion zsh)
 fi
 
-# argocd
 if type "argocd" >/dev/null; then
     source <(argocd completion zsh)
 fi
+
+if type "terraform" >/dev/null; then
+	complete -o nospace -C /usr/bin/terraform terraform
+fi
+
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+autoload -U +X bashcompinit && bashcompinit
