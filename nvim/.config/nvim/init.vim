@@ -80,6 +80,7 @@ Plug 'kdheepak/lazygit.nvim'
 
 " comment
 Plug 'numToStr/Comment.nvim'
+Plug 'folke/todo-comments.nvim'
 
 " markdown preview
 "" pacman -S glow
