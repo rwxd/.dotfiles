@@ -1,6 +1,6 @@
 # Dotfiles
 
-If you don't have `GNU stow` [take the L....](https://www.youtube.com/watch?v=_bckcpIUBo8)
+`GNU stow` is required.
 
 ## Tasks
 ```yaml
