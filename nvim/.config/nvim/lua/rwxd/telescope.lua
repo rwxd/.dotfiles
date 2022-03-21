@@ -15,6 +15,12 @@ require("telescope").setup({
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
+        pickers = {
+            find_files = {
+                hidden = true
+            }
+        },
+
         mappings = {
             i = {
                 ["<C-x>"] = false,
