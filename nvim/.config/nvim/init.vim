@@ -78,6 +78,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " git
 Plug 'kdheepak/lazygit.nvim'
 
+" comment
+Plug 'numToStr/Comment.nvim'
+
 " markdown preview
 "" pacman -S glow
 "" :GlowInstall

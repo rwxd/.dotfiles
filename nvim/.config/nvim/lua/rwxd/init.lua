@@ -1,4 +1,5 @@
 require("rwxd.telescope")
+require("rwxd.comment")
 
 P = function(v)
   print(vim.inspect(v))
