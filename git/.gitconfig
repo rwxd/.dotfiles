@@ -2,11 +2,15 @@
 	email = rwxd@pm.me
 	name = rwxd
 	signingkey = rwxd@pm.me
+
 [pull]
 	rebase = true
+
 [commit]
 	gpgsign = true
+
 [tag]
 	gpgSign = true
+
 [init]
-        defaultBranch = main
+	defaultBranch = main
