@@ -13,6 +13,7 @@ set colorcolumn=100
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType go setlocal ts=4 sts=4 sw=4 expandtab
 
 " Nice menu when typing `:find *.py`
 set wildmode=longest,list,full

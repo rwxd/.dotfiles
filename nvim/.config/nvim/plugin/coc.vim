@@ -56,3 +56,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
+" golang
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :silent call CocAction('runCommand', 'editor.action.organizeImport')
