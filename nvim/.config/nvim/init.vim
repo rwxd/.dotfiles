@@ -125,6 +125,8 @@ nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 ":let mapleader = "\<Space>"
 map <SPACE> <Leader>
 
+nnoremap <leader>pv :Ex<CR>
+
 " lazygit
 nnoremap <silent> <C-g> :LazyGit<CR>
 
@@ -137,6 +139,9 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" make file executable
+nnoremap <leader>x :silent !chmod +x %<CR>
 
 " move lines around
 vnoremap J :m '>+1<CR>gv=gv
