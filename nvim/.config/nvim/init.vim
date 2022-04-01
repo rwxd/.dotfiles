@@ -90,6 +90,7 @@ Plug 'folke/todo-comments.nvim'
 "" pacman -S glow
 "" :GlowInstall
 Plug 'ellisonleao/glow.nvim'
+Plug 'dhruvasagar/vim-table-mode'
 
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
@@ -132,7 +133,7 @@ map <SPACE> <Leader>
 nnoremap <leader>pv :Ex<CR>
 
 " lazygit
-nnoremap <silent> <C-g> :LazyGit<CR>
+" nnoremap <silent> <C-g> :LazyGit<CR>
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
