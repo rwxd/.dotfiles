@@ -66,6 +66,13 @@ cdf(){cd $(fuzzycd "$1")}
 
 fim(){vim $(fuzzyvim "$1")}
 
+# fixed commiting vim-fugitive
+gpg(){
+	if [ -n "$FUGITIVE" ]; then
+	  set -- --pinentry-mode loopback "$@"
+	fi
+	exec /usr/bin/gpg "$@"
+}
 
 ##########################
 ##### zsh stuff
