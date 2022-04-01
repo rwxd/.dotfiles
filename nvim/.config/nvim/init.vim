@@ -174,3 +174,5 @@ noremap <M-0> :tablast<cr>
 nnoremap gev :edit $MYVIMRC<CR>
 nnoremap gsv :source $MYVIMRC<CR>
 
+" stop highlighting of search
+nnoremap gsh :noh<CR>
