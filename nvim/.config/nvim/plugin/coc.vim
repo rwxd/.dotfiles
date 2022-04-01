@@ -45,6 +45,7 @@ inoremap <silent><expr> <C-space> coc#refresh()
 inoremap <silent><expr> <C-@> coc#refresh()
 """ in case Nul is send
 inoremap <silent><expr> <Nul> coc#refresh()
+inoremap <silent><expr> <C-n> coc#refresh()
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
