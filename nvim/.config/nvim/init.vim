@@ -52,6 +52,9 @@ Plug 'junegunn/rainbow_parentheses.vim'
 " nord theme
 Plug 'arcticicestudio/nord-vim'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " A Tree-like side bar for better navigation
 Plug 'scrooloose/nerdtree'
 
