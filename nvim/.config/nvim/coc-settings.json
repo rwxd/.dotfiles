@@ -15,5 +15,7 @@
   "python.linting.mypyEnabled": true,
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--skip-string-normalization"],
-  "diagnostic.checkCurrentLine": true
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false
 }
