@@ -10,5 +10,5 @@
 * uninstall:    clean dotfiles
 ```
 
-## Setup VIM
+## Setup (N)VIM
 :PlugInstall
