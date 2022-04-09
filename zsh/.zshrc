@@ -5,6 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
 
 ##########################
 ##### Path
@@ -44,7 +50,9 @@ bindkey -s ^v "source machvenv\n"
 source "$HOME/.local/bin/source-additional-files"
 
 # vs code
-source "$HOME/.local/bin/code-server-integration"
+if [ -d "$HOME/.vscode-server/" ]; then
+	source "$HOME/.local/bin/code-server-integration"
+fi
 
 # fzf
 #source /usr/share/fzf/completion.zsh
@@ -67,12 +75,12 @@ cdf(){cd $(fuzzycd "$1")}
 fim(){vim $(fuzzyvim "$1")}
 
 # fixed commiting vim-fugitive
-gpg(){
-	if [ -n "$FUGITIVE" ]; then
-	  set -- --pinentry-mode loopback "$@"
-	fi
-	exec /usr/bin/gpg "$@"
-}
+#gpg(){
+#	if [ -n "$FUGITIVE" ]; then
+#	  set -- --pinentry-mode loopback "$@"
+#	fi
+#	exec /usr/bin/gpg "$@"
+#}
 
 ##########################
 ##### zsh stuff
