@@ -29,12 +29,12 @@ require("telescope").setup({
         },
     },
     extensions = {
-        -- fzf = {
-        --     fuzzy = true,
-        --     override_generic_sort = true,
-        --     override_file_sorter = true,
-        --     case_mode = "ignore_case",
-        -- }
+        fzf = {
+            fuzzy = true,
+            override_generic_sort = true,
+            override_file_sorter = true,
+            case_mode = "ignore_case",
+        },
         fzy_native = {
             override_generic_sorter = false,
             override_file_sorter = true,
