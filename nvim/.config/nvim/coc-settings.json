@@ -5,7 +5,9 @@
     "yml",
     "json",
     "go",
-    "sh"
+    "sh",
+    "tf",
+    "terraform"
   ],
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args": [
