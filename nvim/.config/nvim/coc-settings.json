@@ -1,6 +1,7 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
     "py",
+    "python",
     "yaml",
     "yml",
     "json",
