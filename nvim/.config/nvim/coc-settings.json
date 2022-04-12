@@ -4,6 +4,7 @@
     "python",
     "yaml",
     "yml",
+    "yaml.ansible",
     "json",
     "go",
     "sh",
