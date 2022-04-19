@@ -95,6 +95,9 @@ Plug 'folke/todo-comments.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'dhruvasagar/vim-table-mode'
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 
