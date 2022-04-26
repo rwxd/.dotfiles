@@ -18,6 +18,9 @@ autocmd FileType go setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType tf setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType terraform setlocal ts=2 sts=2 sw=2 expandtab
 
+" statusline
+set laststatus=3
+
 " Nice menu when typing `:find *.py`
 set wildmode=longest,list,full
 set wildmenu
@@ -55,6 +58,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 " nord theme
 Plug 'arcticicestudio/nord-vim'
 
+" statusline plugins
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
