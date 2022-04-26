@@ -197,6 +197,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# keyboard settings
+exec "setxkbmap -layout us"
+#exec "setxkbmap -option 'grp:alt_shift_toggle'"
+
 ###################################
 ########## i3 gaps changes
 ###################################
@@ -213,7 +217,7 @@ smart_borders on
 set $base00 #101218
 set $base01 #1f222d
 set $base02 #252936
-set $base03 #5e81ac  
+set $base03 #5e81ac
 set $base04 #C0C5CE
 set $base05 #d1d4e0
 set $base06 #C9CCDB
