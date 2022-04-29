@@ -130,6 +130,9 @@ if type "terraform" >/dev/null; then
 	complete -o nospace -C /usr/bin/terraform terraform
 fi
 
+if type "containerlab" >/dev/null; then
+	source <(containerlab completion zsh)
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
