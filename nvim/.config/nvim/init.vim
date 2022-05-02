@@ -72,6 +72,9 @@ Plug 'ntpeters/vim-better-whitespace'
 "Plug 'neovim/nvim-lspconfig'
 "Plug 'glepnir/lspsaga.nvim'
 
+" indent tab blank
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 " Git integration
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/git-messenger.vim'
