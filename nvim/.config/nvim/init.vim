@@ -80,7 +80,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'rhysd/git-messenger.vim'
 
 " Auto-close braces and scopes
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 "" telescope
 Plug 'nvim-lua/popup.nvim'
