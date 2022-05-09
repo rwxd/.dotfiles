@@ -89,6 +89,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
+Plug 'vimwiki/vimwiki'
+
 " git
 Plug 'kdheepak/lazygit.nvim'
 
