@@ -198,7 +198,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # keyboard settings
-exec "setxkbmap -layout us"
+exec "setxkbmap -layout de"
 #exec "setxkbmap -option 'grp:alt_shift_toggle'"
 
 ###################################
