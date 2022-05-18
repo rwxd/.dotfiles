@@ -2,13 +2,29 @@
 
 `GNU stow` is required.
 
-## Tasks
-```yaml
-* install:      install dotfiles
-* reinstall:    reinstall dotfiles
-* setup:        setup stuff
-* uninstall:    clean dotfiles
+## Commands
+
+### Installing
+
+```bash
+./bin/.local/bin/dotfiles install
 ```
 
-## Setup (N)VIM
+### Reinstall
+
+```bash
+dotfiles reinstall
+```
+
+### Uninstall
+
+```
+dotfiles uninstall
+```
+
+## Setup (N)VIM Plugins
 :PlugInstall
+
+## Setup Tmux Plugins
+
+<leader> + I
