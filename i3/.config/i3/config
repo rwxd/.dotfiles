@@ -25,6 +25,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# start picom compositor
+exec_always --no-startup-id picom
+
 # set background wallpaper
 exec --no-startup-id feh --bg-scale --random ~/wallpaper/
 
@@ -205,10 +208,14 @@ exec "setxkbmap -layout de"
 ########## i3 gaps changes
 ###################################
 
-for_window [class="^.*"] border pixel 1
-gaps inner 0
-gaps outer 0
+for_window [class="^.*"] border pixel 2
+gaps inner 15
 smart_borders on
+
+# for_window [class="^.*"] border pixel 1
+# gaps inner 0
+# gaps outer 0
+# smart_borders on
 
 ####################################
 ########## bar appearance
