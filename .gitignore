@@ -2,3 +2,5 @@
 .vscode/settings.json
 lazygit/.config/lazygit/state.yml
 nvim/.config/coc/extensions/*/
+nvim/.config/coc/extensions/db.json
+nvim/.config/coc/memos.json
