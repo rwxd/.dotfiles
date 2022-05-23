@@ -193,3 +193,6 @@ nnoremap gsv :source $MYVIMRC<CR>
 
 " stop highlighting of search
 nnoremap gsh :noh<CR>
+
+" save as sudo
+cnoremap sudow w !sudo tee % >/dev/null
