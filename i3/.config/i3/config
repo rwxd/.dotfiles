@@ -7,12 +7,10 @@
 
 set $mod Mod4
 
-####################################
-########## font
-####################################
 
-font pango:monospace 12
-
+####################################
+########## autostart
+####################################
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -31,6 +29,13 @@ exec_always --no-startup-id picom
 # set background wallpaper
 exec --no-startup-id feh --bg-scale --random ~/wallpaper/
 
+exec --no-startup-id "sleep 10; nextcloud"
+
+####################################
+########## font
+####################################
+
+font pango:monospace 12
 
 ###################################
 ########## audio
