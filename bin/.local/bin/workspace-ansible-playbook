@@ -65,6 +65,12 @@ tmux_workspace = {
             'layout': 'tiled',
             'start_directory': str(CWD),
             'shell_command_before': 'source machvenv',
+        },
+        {
+            'window_name': 'ansible',
+            'layout': 'tiled',
+            'start_directory': str(CWD),
+            'shell_command_before': 'source machvenv',
         }
     ],
 }
