@@ -1,5 +1,4 @@
 set autoindent
-set smartindent
 set nowrap
 set mouse=a
 set number
@@ -10,7 +9,6 @@ set scrolloff=8
 set colorcolumn=100
 set noswapfile
 set nobackup
-set nohlsearch
 set nohlsearch
 
 " statusline
