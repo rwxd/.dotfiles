@@ -29,6 +29,7 @@ cmp.setup({
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-f>"] = cmp.mapping.complete(),
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
 	}),
 
@@ -86,7 +87,17 @@ local function config(_config)
 	}, _config or {})
 end
 
-require("lspconfig").gopls.setup(config())
+require("lspconfig").gopls.setup(config({
+	cmd = { "gopls", "serve" },
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+}))
 require("lspconfig").pyright.setup(config())
 require("lspconfig").ansiblels.setup(config())
 require("lspconfig").terraformls.setup(config())

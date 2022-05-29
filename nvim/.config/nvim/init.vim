@@ -39,7 +39,7 @@ Plug 'rhysd/git-messenger.vim'
 " Auto-close braces and scopes
 " Plug 'jiangmiao/auto-pairs'
 
-"" telescope
+" Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -66,6 +66,9 @@ Plug 'dhruvasagar/vim-table-mode'
 " Terraform
 Plug 'hashivim/vim-terraform'
 
+" Python
+Plug 'psf/black', { 'branch': 'stable' }
+
 " LSP Stuff
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
@@ -87,6 +90,9 @@ lua require("rwxd")
 " python neovim
 let g:python_host_prog = '~/.venvs/neovim2/bin/python'
 let g:python3_host_prog = '~/.venvs/neovim3/bin/python'
+
+"" black
+let g:black_skip_string_normalization = 1
 
 " tab sizes
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
