@@ -23,6 +23,8 @@ export PATH=$PATH:$HOME/bin/
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.npm-global/bin
+export PATH=$PATH:$HOME/.npm-global/node_modules/.bin
+export NODE_PATH=$PATH:$HOME/.npm-global/
 export GPG_TTY=$(tty)
 
 ##########################

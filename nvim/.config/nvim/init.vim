@@ -29,10 +29,6 @@ Plug 'scrooloose/nerdtree'
 " show bad whitespace in red
 Plug 'ntpeters/vim-better-whitespace'
 
-" nvim lsp
-"Plug 'neovim/nvim-lspconfig'
-"Plug 'glepnir/lspsaga.nvim'
-
 " indent tab blank
 Plug 'lukas-reineke/indent-blankline.nvim'
 
@@ -70,23 +66,18 @@ Plug 'dhruvasagar/vim-table-mode'
 " Terraform
 Plug 'hashivim/vim-terraform'
 
+" LSP Stuff
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'onsails/lspkind-nvim'
+
 " Coc
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 
 call plug#end()
-
-let g:coc_global_extensions = [
-            \ 'coc-pyright',
-            \ 'coc-prettier',
-            \ 'coc-git',
-            \ 'coc-json',
-            \ 'coc-docker',
-            \ 'coc-yaml',
-            \ 'coc-html',
-            \ 'coc-sh',
-            \ 'coc-go',
-            \ '@yaegassy/coc-ansible',
-            \ ]
 
 filetype plugin indent on
 colorscheme nord
