@@ -1,4 +1,5 @@
-nmap <leader>ga :Git fetch --all<CR>
+nmap <leader>gfa :Git fetch --all<CR>
+
 nmap <leader>grum :Git rebase upstream/master<CR>
 nmap <leader>gruM :Git rebase upstream/main<CR>
 nmap <leader>grom :Git rebase origin/master<CR>
