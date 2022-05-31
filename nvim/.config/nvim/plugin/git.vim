@@ -3,6 +3,7 @@ nmap <leader>grum :Git rebase upstream/master<CR>
 nmap <leader>gruM :Git rebase upstream/main<CR>
 nmap <leader>grom :Git rebase origin/master<CR>
 nmap <leader>groM :Git rebase origin/main<CR>
+nmap <leader>grc :Git rebase --continue<CR>
 
 nmap <leader>gp :Git pull<CR>
 nmap <leader>gP :Git push<CR>
