@@ -34,6 +34,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'rhysd/git-messenger.vim'
 
 " Auto-close braces and scopes
@@ -66,8 +67,15 @@ Plug 'dhruvasagar/vim-table-mode'
 " Terraform
 Plug 'hashivim/vim-terraform'
 
+" Prettier
+Plug 'sbdchd/neoformat'
+
 " Python
 Plug 'psf/black', { 'branch': 'stable' }
+
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 
 " LSP Stuff
 Plug 'neovim/nvim-lspconfig'

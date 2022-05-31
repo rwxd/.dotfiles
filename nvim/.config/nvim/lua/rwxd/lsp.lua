@@ -19,7 +19,7 @@ cmp.setup({
 			-- vim.fn["vsnip#anonymous"](args.body)
 
 			-- For `luasnip` user.
-			-- require("luasnip").lsp_expand(args.body)
+			require("luasnip").lsp_expand(args.body)
 
 			-- For `ultisnips` user.
 			-- vim.fn["UltiSnips#Anon"](args.body)
@@ -59,7 +59,7 @@ cmp.setup({
 		-- { name = 'vsnip' },
 
 		-- For luasnip user.
-		-- { name = "luasnip" },
+		{ name = "luasnip" },
 
 		-- For ultisnips user.
 		-- { name = 'ultisnips' },
@@ -70,19 +70,20 @@ cmp.setup({
 
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
-		-- capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = function()
-	 		vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
-			vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {buffer=0})
-	 		vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", {buffer=0})
-	 		vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", {buffer=0})
-	 		vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", {buffer=0})
-	 		vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", {buffer=0})
-	 		vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {buffer=0})
-	 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {buffer=0})
-	 		vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {buffer=0})
-	 		vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
-	 		vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+			vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { buffer = 0 })
+			vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", { buffer = 0 })
+			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", { buffer = 0 })
+			vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { buffer = 0 })
+			vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", { buffer = 0 })
+			vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = 0 })
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
+			vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
+			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
+			vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<CR>", { buffer = 0 })
+			vim.keymap.set("n", "<leader>dv", "<cmd>lua vim.diagnostic.open_float()<CR>", { buffer = 0 })
 		end,
 	}, _config or {})
 end
@@ -98,6 +99,27 @@ require("lspconfig").gopls.setup(config({
 		},
 	},
 }))
+
+local snippets_paths = function()
+	local plugins = { "friendly-snippets" }
+	local paths = {}
+	local path
+	local root_path = vim.env.HOME .. "/.vim/plugged/"
+	for _, plug in ipairs(plugins) do
+		path = root_path .. plug
+		if vim.fn.isdirectory(path) ~= 0 then
+			table.insert(paths, path)
+		end
+	end
+	return paths
+end
+
+require("luasnip.loaders.from_vscode").lazy_load({
+	paths = snippets_paths(),
+	include = nil, -- Load all languages
+	exclude = {},
+})
+
 require("lspconfig").pyright.setup(config())
 require("lspconfig").ansiblels.setup(config())
 require("lspconfig").terraformls.setup(config())
@@ -107,3 +129,4 @@ require("lspconfig").prosemd_lsp.setup(config())
 require("lspconfig").jsonls.setup(config())
 require("lspconfig").dockerls.setup(config())
 require("lspconfig").cmake.setup(config())
+require("lspconfig").intelephense.setup(config())
