@@ -4,6 +4,9 @@ nmap <leader>gruM :Git rebase upstream/main<CR>
 nmap <leader>grom :Git rebase origin/master<CR>
 nmap <leader>groM :Git rebase origin/main<CR>
 
+nmap <leader>gp :Git pull<CR>
+nmap <leader>gP :Git push<CR>
+
 nmap <leader>gd :Gvdiffsplit!<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
