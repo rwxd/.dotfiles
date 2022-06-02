@@ -11,3 +11,5 @@ nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>fgg <cmd>Telescope git_files<cr>
 
 nnoremap <leader>dot :lua require('rwxd.telescope').search_dotfiles()<CR>
+
+nnoremap gw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
