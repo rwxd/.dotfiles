@@ -1,6 +1,7 @@
 lua require("rwxd")
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({ no_ignore = true, hidden = true })<CR>
 nnoremap <leader>fl <cmd>Telescope file_browser<cr>
 nnoremap <leader>fv <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -10,3 +11,4 @@ nnoremap <leader>fgg <cmd>Telescope git_files<cr>
 
 nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
 nnoremap <leader>fd :lua require('rwxd.telescope').search_dotfiles()<CR>
+nnoremap <leader>fw :lua require('rwxd.telescope').search_wiki()<CR>
