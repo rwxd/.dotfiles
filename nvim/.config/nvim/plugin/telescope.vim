@@ -9,6 +9,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 nnoremap <leader>fgg <cmd>Telescope git_files<cr>
 
+nnoremap <leader>fw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
 nnoremap <leader>fd :lua require('rwxd.telescope').search_dotfiles()<CR>
-nnoremap <leader>fw :lua require('rwxd.telescope').search_wiki()<CR>
+nnoremap <leader>fW :lua require('rwxd.telescope').search_wiki()<CR>
