@@ -69,6 +69,7 @@ alias asciicast2gif="docker run --rm -v $PWD:/data asciinema/asciicast2gif"
 alias petname="docker run --rm fjolsvin/petname"
 alias kubeconfig-switcher="source kubeconfig-switcher"
 alias i3lock="/bin/bash -c \"i3lock\""
+alias setup="cd ~/dev/setup && . .venv/bin/activate && make $@ && deactivate"
 
 
 ##########################
