@@ -9,8 +9,8 @@ setup: ## Setup required things
 	pre-commit install
 	pre-commit install-hooks
 
-pre-commit-all: ## run pre-commit on all files
+pre-commit-all: ## Run pre-commit on all files
 	pre-commit run --all-files
 
-pre-commit: ## run pre-commit
+pre-commit: ## Run pre-commit
 	pre-commit run
