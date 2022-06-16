@@ -7,13 +7,12 @@ if ! [[ -d ".venv/" ]]; then
 	python3 -m virtualenv .venv
 	. .venv/bin/activate
 
-	if ! [[ -z $requirements ]]; then
+	if [[ -n $requirements ]]; then
 		for requirement in "${requirements[@]}"; do
 			echo "installing $requirement"
-			python -m pip install -r $requirement
+			python -m pip install -r "$requirement"
 		done
 	fi
-else;
+else
 	. .venv/bin/activate
 fi
-

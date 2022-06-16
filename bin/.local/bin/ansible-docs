@@ -2,23 +2,22 @@
 # fuzzy search ansible documentation
 
 if ! command -v ansible-doc; then
-    echo "ansible-doc not found, maybe source your venv?!"
-    exit 1
+	echo "ansible-doc not found, maybe source your venv?!"
+	exit 1
 fi
 
 export ANSIBLE_FORCE_COLOR="True"
 
-selected=`ansible-doc --list -j 2> /dev/null | jq 'keys[]' | sed 's/"//g' | fzf --reverse --preview 'ansible-doc {}'`
+selected=$(ansible-doc --list -j 2>/dev/null | jq 'keys[]' | sed 's/"//g' | fzf --reverse --preview 'ansible-doc {}')
 
 if [[ -z $selected ]]; then
-    exit 0
+	exit 0
 fi
 
-docs_command="ansible-doc $selected \"$@\""
+docs_command="ansible-doc $selected \"$*\""
 
-if ! [ -z "$TMUX" ]; then
-    tmux neww -n "$selected" bash -c "PATH=$PATH $docs_command"
+if [ -n "$TMUX" ]; then
+	tmux neww -n "$selected" bash -c "PATH=$PATH $docs_command"
 else
-    eval $docs_command
+	eval "$docs_command"
 fi
-

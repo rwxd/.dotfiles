@@ -2,28 +2,28 @@
 # fuzzy searches cht.sh with additional query
 
 if [ -n "$TMUX" ]; then
-    fzf_params="--reverse"
+	fzf_params="--reverse"
 else
-    fzf_params=""
+	fzf_params=""
 fi
 
-selected=`curl -s https://cht.sh/:list | grep "^\w*" | sort --unique | fzf $fzf_params`
+selected=$(curl -s https://cht.sh/:list | grep "^\w*" | sort --unique | fzf "$fzf_params")
 
-if [[ -z $selected ]]; then
-    exit 0
+if [[ -z "$selected" ]]; then
+	exit 0
 fi
 
-read -p "Enter Query: " query
+read -rp "Enter Query: " query
 
-query=`echo $query | tr ' ' '+'`
+query=$(echo "$query" | tr ' ' '+')
 
-if [ $query != "\n" ] ; then
-  echo "if successful"
-  query=$(echo "/"$query)
+if [ "$query" != "\n" ]; then
+	echo "if successful"
+	query="/$query"
 fi
 
-if { [ -n "$TMUX" ]; } then
-    tmux neww -n "$selected" bash -c "curl -s cht.sh/$selected$query | less"
+if [[ -n "$TMUX" ]]; then
+	tmux neww -n "$selected" bash -c "curl -s cht.sh/$selected$query | less"
 else
-    curl -s cht.sh/$selected$query | less
+	curl -s "cht.sh/$selected$query" | less
 fi
