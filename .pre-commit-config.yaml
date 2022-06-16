@@ -10,3 +10,13 @@ repos:
     - id: double-quote-string-fixer
     - id: requirements-txt-fixer
     - id: no-commit-to-branch
+
+  - repo: https://github.com/rwxd/pre-commit-hooks
+    rev: v1.1.0
+    hooks:
+    - id: shellcheck
+
+  - repo: https://github.com/rwxd/pre-commit-hooks
+    rev: v1.1.0
+    hooks:
+    - id: shfmt
