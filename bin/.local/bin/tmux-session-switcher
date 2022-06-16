@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 if [[ $# -eq 1 ]]; then
-    selected=$1
+	selected=$1
 else
-    available_sessions=$(tmux ls -F "#{session_name}")
-    selected=$(fzf --reverse <<< ${available_sessions[@]} | sort -u)
+	available_sessions=$(tmux ls -F "#{session_name}")
+	selected=$(fzf --reverse <<<"${available_sessions[@]}" | sort -u)
 fi
 
 if [[ -z $selected ]]; then
-    exit 0
+	exit 0
 fi
 
 tmux_running=$(pgrep tmux)
@@ -16,12 +16,12 @@ tmux_running=$(pgrep tmux)
 # tmux is not running
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
 	echo "TMUX IS NOT RUNNING"
-    exit 0
+	exit 0
 fi
 
 # switch or attach to existing session
 if [[ -z $TMUX ]]; then
-    tmux attach-session -t $selected
+	tmux attach-session -t "$selected"
 else
-    tmux switch-client -t $selected
+	tmux switch-client -t "$selected"
 fi

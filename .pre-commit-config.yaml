@@ -14,9 +14,19 @@ repos:
   - repo: https://github.com/rwxd/pre-commit-hooks
     rev: v1.1.0
     hooks:
-    - id: shellcheck
-
-  - repo: https://github.com/rwxd/pre-commit-hooks
-    rev: v1.1.0
-    hooks:
-    - id: shfmt
+      - id: shellcheck
+        exclude: |
+          (?x)^(
+            bin/.local/bin/workspace-ansible-playbook|
+            zsh/.p10k.zsh|
+            zsh/.zshrc|
+            bash/.bash_profile|
+          )$
+      - id: shfmt
+        exclude: |
+          (?x)^(
+            bin/.local/bin/workspace-ansible-playbook|
+            zsh/.p10k.zsh|
+            zsh/.zshrc|
+            bash/.bash_profile|
+          )$

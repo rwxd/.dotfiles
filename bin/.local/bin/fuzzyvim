@@ -5,17 +5,17 @@
 IGNORE_LIST=("*venv*" "*venv*" "*.git*" "*.cache*")
 ignore=()
 for i in "${IGNORE_LIST[@]}"; do
-    ignore+=("!" "-path" "$i")
+	ignore+=("!" "-path" "$i")
 done
 
 if [[ $# -eq 1 ]]; then
-    startpoint=$1
+	startpoint="$1"
 else
-    startpoint="."
+	startpoint="."
 fi
 
-selected=$(find $startpoint -mindepth 1 -type f "${ignore[@]}" 2> /dev/null | fzf --preview 'bat --color always {}')
+selected=$(find $startpoint -mindepth 1 -type f "${ignore[@]}" 2>/dev/null | fzf --preview 'bat --color always {}')
 
-if ! [[ -z $selected ]]; then
-    echo $selected
+if [[ -n "$selected" ]]; then
+	echo "$selected"
 fi
