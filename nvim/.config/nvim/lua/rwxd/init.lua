@@ -2,6 +2,7 @@ require("rwxd.telescope")
 require("rwxd.comment")
 require("rwxd.lsp")
 require("rwxd.refactoring")
+require("rwxd.treesitter")
 
 P = function(v)
 	print(vim.inspect(v))
