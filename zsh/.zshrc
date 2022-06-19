@@ -77,7 +77,11 @@ cdf(){cd $(fuzzycd "$1")}
 
 fim(){vim $(fuzzyvim "$1")}
 
-setup(){cd ~/dev/setup && source .venv/bin/activate && make $@ && deactivate}
+setup(){
+	cd ~/dev/setup
+	source .venv/bin/activate
+	make $@ && deactivate
+}
 
 # fixed commiting vim-fugitive
 #gpg(){
