@@ -2,7 +2,7 @@ require 'nvim-treesitter.configs'.setup {
 	-- A list of parser names, or "all"
 	ensure_installed = {
 		"c", "lua", "rust", "python", "go", "latex",
-		"json", "yaml", "vim", "ruby", "php", "nix", "html",
+		"json", "vim", "ruby", "php", "nix", "html",
 		"css", "bash", "astro", "make", "dart", "typescript", "proto", "java"
 	},
 
