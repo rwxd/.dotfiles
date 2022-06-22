@@ -83,6 +83,14 @@ setup(){
 	make $@ && deactivate
 }
 
+tf-docs(){
+	if [ -z "$1" ]; then
+		echo "output file missing"
+	else;
+		docker run --rm -v $(pwd):/project -w /project quay.io/terraform-docs/terraform-docs:latest --hide requirements markdown . > ./$1
+	fi
+}
+
 # fixed commiting vim-fugitive
 #gpg(){
 #	if [ -n "$FUGITIVE" ]; then
