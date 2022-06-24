@@ -51,7 +51,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/refactoring.nvim'
 
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 
 " git
 Plug 'kdheepak/lazygit.nvim'
