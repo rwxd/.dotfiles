@@ -128,8 +128,8 @@ nnoremap <leader>pv :Ex<CR>
 " nnoremap <silent> <C-g> :LazyGit<CR>
 
 " nerdtree
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1 " Show hidden files in NerdTree buffer
+" map <C-n> :NERDTreeToggle<CR>
+" let NERDTreeShowHidden=1 " Show hidden files in NerdTree buffer
 
 " Split windows
 map <C-j> <C-W>j
