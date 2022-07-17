@@ -53,6 +53,8 @@ Plug 'ThePrimeagen/refactoring.nvim'
 
 Plug 'vimwiki/vimwiki'
 
+Plug 'mbbill/undotree'
+
 " git
 Plug 'kdheepak/lazygit.nvim'
 
@@ -123,6 +125,8 @@ nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 map <SPACE> <Leader>
 
 nnoremap <leader>pv :Ex<CR>
+
+nnoremap <leader>u :UndotreeShow<CR>
 
 " lazygit
 " nnoremap <silent> <C-g> :LazyGit<CR>
