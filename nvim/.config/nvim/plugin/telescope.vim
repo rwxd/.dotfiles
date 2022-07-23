@@ -6,7 +6,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 
-nnoremap <C-p> :lua require('telescope.builtin').git_files({ show_untracked = true, recurse_submodules = true})<CR>
+nnoremap <C-p> :lua require('telescope.builtin').git_files({ show_untracked = true })<CR>
 nnoremap <leader>fgb :lua require('telescope.builtin').git_branches()<CR>
 nnoremap <leader>fgcc :lua require('telescope.builtin').git_commits()<CR>
 nnoremap <leader>fgcb :lua require('telescope.builtin').git_bcommits()<CR>
