@@ -1,15 +1,16 @@
 lua require("rwxd")
 
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({ no_ignore = true, hidden = true })<CR>
-nnoremap <leader>fl <cmd>Telescope file_browser<cr>
 nnoremap <leader>fv <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 
-nnoremap <leader>fgg <cmd>Telescope git_files<cr>
-nnoremap <leader>fgb :lua require('rwxd.telescope').git_branches()<CR>
+nnoremap <C-p> :lua require('telescope.builtin').git_files({ show_untracked = true, recurse_submodules = true})<CR>
+nnoremap <leader>fgb :lua require('telescope.builtin').git_branches()<CR>
+nnoremap <leader>fgcc :lua require('telescope.builtin').git_commits()<CR>
+nnoremap <leader>fgcb :lua require('telescope.builtin').git_bcommits()<CR>
+nnoremap <leader>fgs :lua require('telescope.builtin').git_stash()<CR>
 
 nnoremap <leader>fw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
