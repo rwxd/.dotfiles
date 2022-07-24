@@ -33,7 +33,7 @@ export GPG_TTY=$(tty)
 
 export DEFAULT_USER=$USER
 export TERM="xterm-256color"
-
+export HISTCONTROL="ignorespace"
 
 ##########################
 ##### Keybindings
@@ -149,6 +149,10 @@ fi
 
 if type "containerlab" >/dev/null; then
 	source <(containerlab completion zsh)
+fi
+
+if type "kaf" >/dev/null; then
+	source <(kaf completion zsh)
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
