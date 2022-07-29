@@ -152,7 +152,7 @@ vnoremap K :m '<-2<CR>gv=gv
 xnoremap <leader>p "_dP
 
 " glow
-noremap <leader>m :Glow<CR>
+noremap <leader>m :Glow %<CR>
 
 " Go to tab by number
 noremap <M-1> 1gt
