@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+##########################
+##### SSH-Agent
+##########################
+
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 24h > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
@@ -42,7 +46,6 @@ export HISTCONTROL="ignorespace"
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^g "lazygit\n"
 bindkey -s ^v "source machvenv\n"
-
 
 ##########################
 ##### Extra sources
@@ -98,14 +101,6 @@ tf-docs(){
 	fi
 }
 
-# fixed commiting vim-fugitive
-#gpg(){
-#	if [ -n "$FUGITIVE" ]; then
-#	  set -- --pinentry-mode loopback "$@"
-#	fi
-#	exec /usr/bin/gpg "$@"
-#}
-
 ##########################
 ##### zsh stuff
 ##########################
@@ -128,11 +123,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-autoload -Uz compinit
-zstyle ':completion:*' menu select
-fpath+=~/.zfunc
-
 
 ##########################
 ##### autocompletions
@@ -162,7 +152,18 @@ if type "kaf" >/dev/null; then
 	source <(kaf completion zsh)
 fi
 
+if type "kafkactl" >/dev/null; then
+	source <(kafkactl completion zsh)
+fi
+
+if type "rustup" >/dev/null; then
+	rustup completions zsh > ~/.zsh/rustup-completion.zsh
+	# source <(rustup completions zsh)
+fi
+
+fpath+=~/.zsh
+autoload -U compinit && compinit
+zstyle ':completion:*' menu select
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-autoload -U +X bashcompinit && bashcompinit

@@ -5,8 +5,7 @@ require("nvim-lsp-installer").setup({
 local cmp = require("cmp")
 local source_mapping = {
 	buffer = "[Buffer]",
-	nvim_lsp = "[LSP]",
-	nvim_lua = "[Lua]",
+	nvim_lsp = "[LSP]", nvim_lua = "[Lua]",
 	cmp_tabnine = "[TN]",
 	path = "[Path]",
 }
@@ -123,7 +122,9 @@ require("luasnip.loaders.from_vscode").lazy_load({
 require("lspconfig").pyright.setup(config())
 require("lspconfig").ansiblels.setup(config())
 require("lspconfig").terraformls.setup(config())
-require("lspconfig").rust_analyzer.setup(config())
+require("lspconfig").rust_analyzer.setup(config({
+	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+}))
 require("lspconfig").sumneko_lua.setup(config())
 require("lspconfig").prosemd_lsp.setup(config())
 require("lspconfig").jsonls.setup(config())
