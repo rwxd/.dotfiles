@@ -63,6 +63,8 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'folke/todo-comments.nvim'
 
+Plug 'github/copilot.vim'
+
 " markdown preview
 "" pacman -S glow
 "" :GlowInstall
