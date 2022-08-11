@@ -7,7 +7,7 @@ if ! command -v kubectl; then
 	exit 1
 fi
 
-selected=$(kubectl api-resources -o name --sort-by="name" 2>/dev/null | fzf --preview 'kubectl explain {}')
+selected=$(kubectl api-resources -o name --sort-by="name" 2>/dev/null | fzf-tmux -p --preview 'kubectl explain {}')
 
 if [[ -z $selected ]]; then
 	exit 0

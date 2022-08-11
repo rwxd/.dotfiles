@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
 	selected=$1
 else
 	available_sessions=$(tmux ls -F "#{session_name}")
-	selected=$(fzf --reverse <<<"${available_sessions[@]}" | sort -u)
+	selected=$(fzf-tmux -p --reverse <<<"${available_sessions[@]}" | sort -u)
 fi
 
 if [[ -z $selected ]]; then
