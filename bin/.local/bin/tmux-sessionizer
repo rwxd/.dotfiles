@@ -19,7 +19,7 @@ else
 		find "$SEARCH_PATH" -mindepth 1 -maxdepth 6 -name '.git' -type d "${ignore[@]}" 2>/dev/null | sed 's/\.git//g' &&
 			find "$TMUX_WORKSPACES_PATH" -mindepth 1 -maxdepth 1 -name "*.tmux-workspace.yml" -type f "${ignore[@]}" 2>/dev/null
 	)
-	selected=$(fzf --reverse --preview 'glow -s dark {}/README.md 2> /dev/null || echo "No README.md found 😞"' <<<"${files[@]}" | sort -u)
+	selected=$(fzf-tmux -p 85% --reverse --preview 'glow -s dark {}/README.md 2> /dev/null || echo "No README.md found 😞"' <<<"${files[@]}" | sort -u)
 fi
 
 if [[ -z "$selected" ]]; then
