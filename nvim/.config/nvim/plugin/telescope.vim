@@ -16,3 +16,7 @@ nnoremap <leader>fw :lua require('telescope.builtin').grep_string { search = vim
 nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
 nnoremap <leader>fd :lua require('rwxd.telescope').search_dotfiles()<CR>
 nnoremap <leader>fW :lua require('rwxd.telescope').search_wiki()<CR>
+
+nnoremap <leader>fp :lua require('telescope').extensions.file_browser.file_browser({ hidden = true })<CR>
+
+nnoremap <leader>fo :lua require('telescope').extensions.frecency.frecency({})<CR>
