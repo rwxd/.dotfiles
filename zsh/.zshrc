@@ -169,6 +169,18 @@ if type "rustup" >/dev/null; then
 	# source <(rustup completions zsh)
 fi
 
+if type "gh" >/dev/null; then
+	source <(gh completion -s zsh)
+fi
+
+if type "glab" >/dev/null; then
+	source <(glab completion -s zsh)
+fi
+
+if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
+	source "/usr/share/nvm/init-nvm.sh"
+fi
+
 fpath+=~/.zsh
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select

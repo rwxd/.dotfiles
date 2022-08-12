@@ -11,6 +11,7 @@ nnoremap <leader>fgb :lua require('telescope.builtin').git_branches()<CR>
 nnoremap <leader>fgcc :lua require('telescope.builtin').git_commits()<CR>
 nnoremap <leader>fgcb :lua require('telescope.builtin').git_bcommits()<CR>
 nnoremap <leader>fgs :lua require('telescope.builtin').git_stash()<CR>
+nnoremap <leader>gi :lua require('telescope.builtin').git_status()<CR>
 
 nnoremap <leader>fw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>

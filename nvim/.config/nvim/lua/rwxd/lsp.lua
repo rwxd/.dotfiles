@@ -124,6 +124,18 @@ require("lspconfig").ansiblels.setup(config())
 require("lspconfig").terraformls.setup(config())
 require("lspconfig").rust_analyzer.setup(config({
 	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+	settings = {
+		["rust-analyzer"] = {
+			checkOnSave = {
+				command = "clippy",
+			},
+			completion = {
+				autoimport = {
+					enable = true,
+				},
+			},
+		},
+	}
 }))
 require("lspconfig").sumneko_lua.setup(config())
 require("lspconfig").prosemd_lsp.setup(config())
