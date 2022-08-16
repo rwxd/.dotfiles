@@ -67,11 +67,6 @@ if [ -d "$HOME/.vscode-server/" ]; then
 	source "$HOME/.local/bin/code-server-integration"
 fi
 
-# fzf
-#source /usr/share/fzf/completion.zsh
-#source /usr/share/fzf/key-bindings.zsh
-
-
 ##########################
 ##### Aliases
 ##########################
@@ -123,14 +118,16 @@ plugins=(
     colored-man-pages
     zsh-autosuggestions
     zsh-syntax-highlighting
-    zsh-completions
-    vscode
+    # zsh-completions
     docker
-    jsontools
     dotenv
 )
 
-source $ZSH/oh-my-zsh.sh
+fpath+=~/.zsh
+fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
+source "$ZSH/oh-my-zsh.sh"
+# autoload -U compinit && compinit
+zstyle ':completion:*' menu select
 
 ##########################
 ##### autocompletions
@@ -146,6 +143,10 @@ fi
 
 if type "argocd" >/dev/null; then
     source <(argocd completion zsh)
+fi
+
+if type "argo" >/dev/null; then
+    source <(argo completion zsh)
 fi
 
 if type "terraform" >/dev/null; then
@@ -181,9 +182,14 @@ if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
 	source "/usr/share/nvm/init-nvm.sh"
 fi
 
-fpath+=~/.zsh
-autoload -U compinit && compinit
-zstyle ':completion:*' menu select
+# fzf
+if [ -f "/usr/share/fzf/completion.zsh" ]; then
+	source /usr/share/fzf/completion.zsh
+fi
+
+if [ -f "/usr/share/fzf/key-bindings.zsh" ]; then
+	source /usr/share/fzf/key-bindings.zsh
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
