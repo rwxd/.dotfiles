@@ -10,5 +10,5 @@ if [ -z "$selected" ]; then
 	exit 0
 fi
 
-eval "$selected | sed -E 's/\s-.*$//' | xargs tmux switch-client -t"
+echo "$selected" | sed -E 's/\s-.*$//' | xargs tmux switch-client -t
 exit 0
