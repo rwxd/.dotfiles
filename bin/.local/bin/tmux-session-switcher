@@ -1,27 +1,14 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 1 ]]; then
-	selected=$1
-else
-	available_sessions=$(tmux ls -F "#{session_name}")
-	selected=$(fzf-tmux -p --reverse <<<"${available_sessions[@]}" | sort -u)
-fi
+set -e -o pipefail
 
-if [[ -z $selected ]]; then
+windows=$(tmux list-windows -a -F '#{session_name}:#{window_index} - #{window_name}')
+
+selected=$(fzf-tmux -p 85% --reverse --preview 'echo {} | sed -E "s/\s-.*$//" | xargs tmux capture-pane -p -e -t' <<<"${windows[@]}")
+
+if [ -z "$selected" ]; then
 	exit 0
 fi
 
-tmux_running=$(pgrep tmux)
-
-# tmux is not running
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-	echo "TMUX IS NOT RUNNING"
-	exit 0
-fi
-
-# switch or attach to existing session
-if [[ -z $TMUX ]]; then
-	tmux attach-session -t "$selected"
-else
-	tmux switch-client -t "$selected"
-fi
+eval "$selected | sed -E 's/\s-.*$//' | xargs tmux switch-client -t"
+exit 0
