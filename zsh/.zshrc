@@ -127,6 +127,7 @@ fpath+=~/.zsh
 fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
 source "$ZSH/oh-my-zsh.sh"
 # autoload -U compinit && compinit
+# autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*' menu select
 
 ##########################
@@ -180,6 +181,10 @@ fi
 
 if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
 	source "/usr/share/nvm/init-nvm.sh"
+fi
+
+if type "vault" >/dev/null; then
+	complete -o nospace -C /usr/bin/vault vault
 fi
 
 # fzf
