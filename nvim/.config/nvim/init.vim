@@ -37,6 +37,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'rhysd/git-messenger.vim'
 
+Plug 'vim-test/vim-test'
+
 " Auto-close braces and scopes
 " Plug 'jiangmiao/auto-pairs'
 
