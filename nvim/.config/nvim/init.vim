@@ -107,7 +107,7 @@ call plug#end()
 
 filetype plugin indent on
 
-colorscheme nord
+" colorscheme nord
 let g:airline_theme='atomic'
 
 lua require("rwxd")
