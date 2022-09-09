@@ -33,3 +33,5 @@ set updatetime=750
 
 " Give more space for displaying messages.
 set cmdheight=1
+
+set termguicolors

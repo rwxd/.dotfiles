@@ -3,6 +3,7 @@ require("rwxd.comment")
 require("rwxd.lsp")
 require("rwxd.refactoring")
 require("rwxd.treesitter")
+require("rwxd.theme")
 
 P = function(v)
 	print(vim.inspect(v))

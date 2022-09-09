@@ -16,7 +16,10 @@ call plug#begin('~/.vim/plugged')
 " color
 Plug 'junegunn/rainbow_parentheses.vim'
 
-" nord theme
+" theme
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+
+"" nord theme
 Plug 'arcticicestudio/nord-vim'
 
 " statusline plugins
@@ -70,8 +73,6 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'folke/todo-comments.nvim'
 
-Plug 'github/copilot.vim'
-
 " markdown preview
 "" pacman -S glow
 "" :GlowInstall
@@ -105,7 +106,9 @@ Plug 'onsails/lspkind-nvim'
 call plug#end()
 
 filetype plugin indent on
+
 colorscheme nord
+let g:airline_theme='atomic'
 
 lua require("rwxd")
 

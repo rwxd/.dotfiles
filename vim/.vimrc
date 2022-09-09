@@ -8,6 +8,8 @@ set mouse=a
 " Don't wrap text
 set nowrap
 
+set termguicolors
+
 " Show line number
 set number
 set relativenumber
