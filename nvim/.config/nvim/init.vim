@@ -45,6 +45,12 @@ Plug 'vim-test/vim-test'
 " Auto-close braces and scopes
 " Plug 'jiangmiao/auto-pairs'
 
+" Debugger
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'mfussenegger/nvim-dap-python'
+
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'

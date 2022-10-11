@@ -4,6 +4,8 @@ require("rwxd.lsp")
 require("rwxd.refactoring")
 require("rwxd.treesitter")
 require("rwxd.theme")
+require("rwxd.debugger")
+require("rwxd.keymap")
 
 P = function(v)
 	print(vim.inspect(v))
