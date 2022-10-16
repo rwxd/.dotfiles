@@ -30,6 +30,9 @@ export PATH=$PATH:$HOME/.npm-global/bin
 export PATH=$PATH:$HOME/.npm-global/node_modules/.bin
 export NODE_PATH=$PATH:$HOME/.npm-global/
 export GPG_TTY=$(tty)
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+export EDITOR=nvim
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 ##########################
 ##### ENV Vars
